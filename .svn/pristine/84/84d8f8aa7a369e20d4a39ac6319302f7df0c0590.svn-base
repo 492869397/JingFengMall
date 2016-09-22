@@ -1,0 +1,48 @@
+//
+//  HomeSeviceView.m
+//  JingFengMall
+//
+//  Created by mac on 16/6/8.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "HomeSeviceView.h"
+#import "HomeSecondViewController.h"
+#import "HomeFuwuViewController.h"
+#import "HomesignUpViewController.h"
+
+#import "HomeAssessViewController.h"
+
+@interface HomeSeviceView()
+
+- (IBAction)baomingBtn:(id)sender;
+
+- (IBAction)pressButtonByTag:(UIButton *)sender;
+
+
+
+@end
+
+@implementation HomeSeviceView
+
+- (IBAction)baomingBtn:(id)sender {
+    //
+    
+    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    HomesignUpViewController *HPVC = [[HomesignUpViewController alloc]init];
+    [nav pushViewController:HPVC animated:YES];
+    
+}
+
+- (IBAction)pressButtonByTag:(UIButton *)sender {
+    
+    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    HomeFuwuViewController *secondVC = [[HomeFuwuViewController alloc]init];
+    [nav pushViewController:secondVC animated:YES];
+    
+    secondVC.buttonTag = sender.tag + 99;
+}
+
+
+
+@end

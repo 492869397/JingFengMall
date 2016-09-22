@@ -1,0 +1,75 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9992+++5ACE651",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++ED8A67B" : {
+
+    },
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9138+++146925E" : {
+
+    },
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9992+++5ACE651" : {
+
+    },
+    "9DCE8274EDAF1C47B39F5E23DBA991198F9C82C5+++F1801DF" : {
+
+    },
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++1073+++C743033" : {
+
+    },
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++7A89B30" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++ED8A67B" : 0,
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9138+++146925E" : 0,
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9992+++5ACE651" : 0,
+    "9DCE8274EDAF1C47B39F5E23DBA991198F9C82C5+++F1801DF" : 9223372036854775807,
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++1073+++C743033" : 0,
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++7A89B30" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BF6A9FF8-DF9F-42AC-B4CE-07AF730C5B5C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++ED8A67B" : "JingFengMall\/JingFengMall\/",
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9138+++146925E" : "JingFengMall1\/JingFengMall\/",
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9992+++5ACE651" : "JingFengMall1\/",
+    "9DCE8274EDAF1C47B39F5E23DBA991198F9C82C5+++F1801DF" : "JingFengMall\/",
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++1073+++C743033" : "",
+    "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++7A89B30" : "JingFengMall\/JingFengMall\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JingFengMall",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "JingFengMall.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/101.200.214.252\/svn\/jfsc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++1073+++C743033"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/101.200.214.252\/svn\/JFSC",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9138+++146925E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/114.215.149.33\/svn\/jfsc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++7A89B30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/xiaoxinapp.com\/svn\/jfsc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++95+++ED8A67B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/101.200.214.252\/svn\/JFSC",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "84f4aa02-bf19-654b-ba95-7d5fd8a6ba16++9992+++5ACE651"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/114.215.149.33\/svn\/jfsc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9DCE8274EDAF1C47B39F5E23DBA991198F9C82C5+++F1801DF"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+//
+//  CommitOrderViewController.m
+//  JingFengMall
+//
+//  Created by mac on 16/3/22.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "CommitOrderViewController.h"
+#import "SelectAddrssViewController.h"
+#import "SelectBillViewController.h"
+#import "CouponViewController.h"
+#import "GoodsModel.h"
+#import "ZhiFuView.h"
+#import "UIImageView+AFNetworking.h"
+
+@interface CommitOrderViewController ()
+
+@end
+
+@implementation CommitOrderViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"结算";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
+    
+    [self getUserLevelFromNet];
+}
+
+-(void)getUserLevelFromNet
+{
+    Network *net = [[Network alloc]init];
+    NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:1];
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    [pass setObject:user forKey:@"userPhone"];
+    
+    [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/selectUserByUserPhone.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+            
+            
+            NSDictionary *dic = [[responseObject objectForKey:@"list"]firstObject];
+            
+            
+            
+            self.userLevel = [(NSString*)[dic objectForKey:@"gradeID"] intValue];
+            
+            [self setLabels];
+        
+        }
+    }];
+
+}
+
+
+-(void)setLabels
+{
+    _totalPrice = 0;
+    for (GoodsModel *goods in _array) {
+        _totalPrice += goods.price.doubleValue*goods.goodsNumber.integerValue;
+    }
+    
+    GoodsModel *goods = _array[0];
+    NSString *url = [goods.photo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [self.photo setImageWithURL:[NSURL URLWithString:url]];
+    
+    self.nameLabel.text = goods.title;
+    self.number.text = [NSString stringWithFormat:@"共%lu件商品",(unsigned long)_array.count];
+    
+    //计算价格
+    self.price.text = [NSString stringWithFormat:@"¥%.2lf",_totalPrice];
+
+   
+    float minus ;
+    switch(_userLevel) {
+        case 1:
+            minus = 0;
+            break;
+            
+        case 2:
+            minus = _totalPrice * (1 - 0.99);
+            break;
+         
+        case 3:
+            minus = _totalPrice *(1-0.98);
+            break;
+        
+        case 4:
+            minus = _totalPrice *(1-0.97);
+            break;
+        
+        case 5:
+            minus = _totalPrice *(1-0.96);
+            break;
+        
+        case 6:
+            minus = _totalPrice *(1-0.95);
+            break;
+         
+        case 7:
+            minus = _totalPrice *(1-0.9);
+            break;
+            
+        default:
+            break;
+    }
+    
+    self.minusPrice.text = [NSString stringWithFormat:@"-    ¥%.2lf",minus];
+    
+    self.finalPrice.text = [NSString stringWithFormat:@"¥%.2lf",_totalPrice - minus];
+    
+}
+
+//重新计算价格，当选择了现金券时调用
+-(void)calculatePrice
+{
+    self.couponLabel.text = @"已选择";
+    NSString *s = [NSString stringWithFormat:@"-¥%@.00",_coupon.couponType];
+    self.minusPrice.text = s;
+    
+    double final = _totalPrice - _coupon.couponType.doubleValue;
+    
+    if (final < 0.00) {
+        final = 0.00;
+    }
+    s = [NSString stringWithFormat:@"¥%.2lf",final];
+    self.finalPrice.text = s;
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)lookGoodsDetail:(id)sender {
+}
+
+- (IBAction)selectGetGoodsPlace:(UITapGestureRecognizer *)sender {
+    SelectAddrssViewController *address = [[SelectAddrssViewController alloc]init];
+    address.delegate = self;
+    [self.navigationController pushViewController:address animated:YES];
+}
+
+- (IBAction)selectBill:(UITapGestureRecognizer *)sender {
+    
+    SelectBillViewController *bill = [[SelectBillViewController alloc]init];
+    [self.navigationController pushViewController:bill animated:YES];
+    
+}
+
+- (IBAction)selectCoupon:(UITapGestureRecognizer *)sender {
+    
+    CouponViewController *coupon = [[CouponViewController alloc]init];
+    
+    coupon.delegate = self;
+    
+    [self.navigationController pushViewController:coupon animated:YES];
+    
+}
+
+- (IBAction)confirm:(UIButton *)sender {
+    
+    if (!(self.con)) {
+        
+        Toast *toa = [Toast makeText:@"请选择收货地址"];
+        [toa showWithType:ShortTime];
+        
+        return;
+    }
+    
+    
+    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [activity setCenter:CGPointMake(kMainScreenWidth/2.0, kMainScreenHeight/2.0)];//指定进度轮中心点
+    
+    [activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];//设置进度轮显示类型
+    [self.view addSubview:activity];
+    [activity startAnimating];
+
+    
+    NSMutableString *commodityIDNumber = [NSMutableString string];
+    
+    for (GoodsModel *goods in _array) {
+        
+        if ([commodityIDNumber isEqualToString:@""]) {
+            
+            [commodityIDNumber appendString:[NSString stringWithFormat:@"%@",goods.goodsID]];
+            [commodityIDNumber appendString:[NSString stringWithFormat:@",%@",goods.goodsNumber]];
+            
+        }else
+        {
+            [commodityIDNumber appendString:[NSString stringWithFormat:@",%@",goods.goodsID]];
+            [commodityIDNumber appendString:[NSString stringWithFormat:@",%@",goods.goodsNumber]];
+        }
+    }
+    
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    
+    NSMutableDictionary *pass = [[NSMutableDictionary alloc]init];
+    
+    if (self.coupon) {
+        [pass setObject:_coupon.couponType forKey:@"voucherMoney"];
+    }
+    
+    [pass setObject:user forKey:@"userPhone"];
+    [pass setObject:_con.Id forKey:@"userAddressID"];
+    [pass setObject:commodityIDNumber forKey:@"commodityIDNumber"];
+    
+    if (_bill) {
+        [pass setObject:_bill forKey:@"invoice"];
+    }
+    
+    
+    NSString *url = [@"http://123.57.28.11:8080/jfsc_app/addMallOrder.do" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[AFHTTPSessionManager manager]POST:url parameters:pass success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        if ([[responseObject objectForKey:@"code"] isEqualToNumber:@1]) {
+            
+            [self enterPay:([responseObject objectForKey:@"id"])];
+            
+        }else
+        {
+            NSString *msg = [responseObject objectForKey:@"msg"];
+            Toast *toa = [Toast makeText:msg];
+            [toa showWithType:ShortTime];
+        }
+        
+        [activity stopAnimating];
+        [activity removeFromSuperview];
+        
+    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        
+        [activity stopAnimating];
+        [activity removeFromSuperview];
+
+        Toast *toa = [Toast makeText:@"网络连接失败请重试"];
+        [toa showWithType:ShortTime];
+        
+    }];
+    
+}
+
+- (void)enterPay:(NSNumber*)num {
+    
+    ZhiFuView *view= [[[NSBundle mainBundle]loadNibNamed:@"ZhiFuView" owner:nil options:nil]firstObject];
+    
+    [[[UIApplication sharedApplication] keyWindow]addSubview:view];
+    
+    view.delegate = self;
+    view.num = num;
+    view.payFlag = 1;//支付的flag，用来标志支付的url
+    
+    
+    CGRect frame = [[UIApplication sharedApplication] keyWindow].frame;
+    
+    view.frame = CGRectMake(0, 0, 0, 0);
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        view.frame = frame;
+    }];
+    
+}
+
+
+@end

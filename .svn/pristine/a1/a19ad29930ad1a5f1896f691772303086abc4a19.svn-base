@@ -1,0 +1,137 @@
+//
+//  HouseSeviceView.m
+//  JingFengMall
+//
+//  Created by len on 16/5/5.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "HouseSeviceView.h"
+#import "HomeSecondViewController.h"
+#import "HomeFuwuViewController.h"
+#import "HomesignUpViewController.h"
+
+//////
+#import "HomeAssessViewController.h"
+
+@interface HouseSeviceView()
+
+- (IBAction)AmahBtn:(id)sender;
+- (IBAction)baomingBtn:(id)sender;
+- (IBAction)caboliBtn:(id)sender;
+- (IBAction)baojieBtn:(id)sender;
+
+- (IBAction)youyanjiBtn:(id)sender;
+
+- (IBAction)banjiaBtn:(id)sender;
+- (IBAction)kongtiaoBtn:(id)sender;
+- (IBAction)xiyijiBtn:(id)sender;
+- (IBAction)xinjuBtn:(id)sender;
+- (IBAction)bingxiangBtn:(id)sender;
+
+- (IBAction)weishengjianBtn:(id)sender;
+- (IBAction)shenduBtn:(id)sender;
+- (IBAction)chufangBtn:(id)sender;
+ 
+
+@end
+@implementation HouseSeviceView
+
+
+
+- (id)initWithFrame:(CGRect)frame
+
+{
+    self= [super initWithFrame:frame];
+    
+    if(self)
+    {
+        
+    }
+    return self;
+    
+}
+- (IBAction)AmahBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)baomingBtn:(id)sender {
+    //
+    
+    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    HomesignUpViewController *HPVC = [[HomesignUpViewController alloc]init];
+    [nav pushViewController:HPVC animated:YES];
+    
+}
+
+- (IBAction)caboliBtn:(id)sender {
+    
+//    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//    HomeAssessViewController *HPVC = [[HomeAssessViewController alloc]init];
+//    [nav pushViewController:HPVC animated:YES];
+    [self btnClick];
+}
+
+- (IBAction)baojieBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)youyanjiBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)banjiaBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)kongtiaoBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)xiyijiBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)xinjuBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)bingxiangBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)weishengjianBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)shenduBtn:(id)sender {
+    [self btnClick];
+}
+
+- (IBAction)chufangBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)YunShuBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)JiaJuBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)LifeBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)YueSaoBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)QingJieBtn:(id)sender {
+    [self btnClick];
+}
+- (IBAction)QiTABtn:(id)sender {
+    [self btnClick];
+}
+
+-(void)btnClick{
+    UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    HomeFuwuViewController *secondVC = [[HomeFuwuViewController alloc]init];
+    [nav pushViewController:secondVC animated:YES];
+}
+@end

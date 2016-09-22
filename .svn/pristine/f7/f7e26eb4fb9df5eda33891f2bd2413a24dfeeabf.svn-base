@@ -1,0 +1,63 @@
+//
+//  AttornView.m
+//  JingFengMall
+//
+//  Created by mac on 16/4/17.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "AttornView.h"
+
+@implementation AttornView
+
+- (IBAction)confirm:(id)sender {
+    
+    if ([self validateMobile:self.phone.text]) {
+        
+        NSString *phone = [[NSUserDefaults standardUserDefaults]objectForKey:@"userPhone"];
+        NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:3];
+        [pass setObject:phone forKey:@"userPhone"];
+        [pass setObject:_cou.couponType forKey:@"voucherType"];
+        [pass setObject:_phone.text forKey:@"sendPhone"];
+        
+        Network *net = [[Network alloc]init];
+        [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/voucherSend.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            NSString *msg = [responseObject objectForKey:@"msg"];
+            Toast *toa = [Toast makeText:msg];
+            [toa showWithType:ShortTime];
+            
+            if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+                
+                [self removeFromSuperview];
+                
+            }
+            
+        }];
+        
+    }
+    
+}
+
+- (IBAction)cancel:(id)sender {
+    
+    [self removeFromSuperview];
+}
+
+//判断是否是手机号
+- (BOOL)validateMobile:(NSString *)mobileNum
+{
+    
+    if (mobileNum.length == 11)
+    {
+        return YES;
+    }else
+    {
+        Toast *toast = [Toast makeText:@"请输入正确的手机号"];
+        [toast showWithType:ShortTime];
+        
+        return NO;
+    }
+}
+
+@end

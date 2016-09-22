@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AttornView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPg-r4-q2l">
+                    <rect key="frame" x="150" y="233" width="300" height="195"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tv3-fq-sf1">
+                            <rect key="frame" x="60" y="130" width="60" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="Wmg-m1-zZN"/>
+                                <constraint firstAttribute="width" constant="60" id="lSz-IJ-nEB"/>
+                            </constraints>
+                            <state key="normal" title="取消" backgroundImage="btn.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="vCe-Qb-awZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYh-Qd-kWK">
+                            <rect key="frame" x="180" y="130" width="60" height="35"/>
+                            <state key="normal" title="确认" backgroundImage="btn.png">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="confirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="Nt5-jE-yAJ"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入对方手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ihr-d6-SLF">
+                            <rect key="frame" x="60" y="80" width="180" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入支付金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-3U-5Ly">
+                            <rect key="frame" x="60" y="30" width="180" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="5sK-Ip-tqb"/>
+                                <constraint firstAttribute="height" constant="30" id="qsl-Nf-1P9"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="ONK-ip-ujn"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="KHe-3U-5Ly" firstAttribute="top" secondItem="fPg-r4-q2l" secondAttribute="top" constant="30" id="6VQ-EI-ux7"/>
+                        <constraint firstItem="tv3-fq-sf1" firstAttribute="top" secondItem="Ihr-d6-SLF" secondAttribute="bottom" constant="20" id="A2n-qj-ont"/>
+                        <constraint firstItem="Ihr-d6-SLF" firstAttribute="top" secondItem="KHe-3U-5Ly" secondAttribute="bottom" constant="20" id="IdQ-aw-VoW"/>
+                        <constraint firstItem="GYh-Qd-kWK" firstAttribute="trailing" secondItem="Ihr-d6-SLF" secondAttribute="trailing" id="KCa-8O-KCi"/>
+                        <constraint firstItem="GYh-Qd-kWK" firstAttribute="centerY" secondItem="tv3-fq-sf1" secondAttribute="centerY" id="RD8-yh-Bzz"/>
+                        <constraint firstItem="Ihr-d6-SLF" firstAttribute="height" secondItem="KHe-3U-5Ly" secondAttribute="height" id="S9X-8W-U4O"/>
+                        <constraint firstAttribute="bottom" secondItem="tv3-fq-sf1" secondAttribute="bottom" constant="30" id="SqS-II-nVd"/>
+                        <constraint firstItem="tv3-fq-sf1" firstAttribute="leading" secondItem="Ihr-d6-SLF" secondAttribute="leading" id="hsO-xB-ofX"/>
+                        <constraint firstItem="Ihr-d6-SLF" firstAttribute="leading" secondItem="KHe-3U-5Ly" secondAttribute="leading" id="kTZ-3W-lv9"/>
+                        <constraint firstItem="GYh-Qd-kWK" firstAttribute="width" secondItem="tv3-fq-sf1" secondAttribute="width" id="pM5-65-8a7"/>
+                        <constraint firstItem="Ihr-d6-SLF" firstAttribute="width" secondItem="KHe-3U-5Ly" secondAttribute="width" id="rsj-mh-JGs"/>
+                        <constraint firstItem="Ihr-d6-SLF" firstAttribute="centerX" secondItem="fPg-r4-q2l" secondAttribute="centerX" id="ryC-rI-Od1"/>
+                        <constraint firstItem="GYh-Qd-kWK" firstAttribute="height" secondItem="tv3-fq-sf1" secondAttribute="height" id="ugZ-RF-y7C"/>
+                        <constraint firstAttribute="width" constant="300" id="zS0-3L-huz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.42727179276315791" alpha="0.68512457770270274" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fPg-r4-q2l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Pds-Yc-LdH"/>
+                <constraint firstItem="fPg-r4-q2l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="Ugf-TT-5fa"/>
+                <constraint firstAttribute="bottom" secondItem="fPg-r4-q2l" secondAttribute="bottom" constant="150" id="hRj-NP-VIA"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="hRj-NP-VIA"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="coin" destination="KHe-3U-5Ly" id="NMV-9n-JEY"/>
+                <outlet property="phone" destination="Ihr-d6-SLF" id="Hu4-o5-hpg"/>
+                <outlet property="subview" destination="fPg-r4-q2l" id="UfK-BW-8Xi"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn.png" width="194" height="62"/>
+    </resources>
+</document>

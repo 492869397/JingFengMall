@@ -1,0 +1,21 @@
+//
+//  GoodsDetailTitleView.m
+//  JingFengMall
+//
+//  Created by mac on 16/4/6.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "GoodsDetailTitleView.h"
+
+@implementation GoodsDetailTitleView
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end

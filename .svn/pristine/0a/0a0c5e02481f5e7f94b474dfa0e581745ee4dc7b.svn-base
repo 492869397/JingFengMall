@@ -1,0 +1,299 @@
+//
+//  HomeAssessViewController.m
+//  JingFengMall
+//
+//  Created by len on 16/5/10.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "HomeAssessViewController.h"
+#import "HomeSucceedViewController.h"
+
+@interface HomeAssessViewController ()
+{
+   NSString *one;
+   NSString *two;
+   NSString *three;
+}
+- (IBAction)FinishedBtn:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *star1;
+@property (strong, nonatomic) IBOutlet UIButton *star2;
+@property (strong, nonatomic) IBOutlet UIButton *star3;
+@property (strong, nonatomic) IBOutlet UIButton *star4;
+@property (strong, nonatomic) IBOutlet UIButton *star5;
+@property (strong, nonatomic) IBOutlet UIButton *star21;
+@property (strong, nonatomic) IBOutlet UIButton *star22;
+@property (strong, nonatomic) IBOutlet UIButton *star23;
+@property (strong, nonatomic) IBOutlet UIButton *star24;
+@property (strong, nonatomic) IBOutlet UIButton *star25;
+@property (strong, nonatomic) IBOutlet UIButton *star31;
+@property (strong, nonatomic) IBOutlet UIButton *star32;
+@property (strong, nonatomic) IBOutlet UIButton *star33;
+@property (strong, nonatomic) IBOutlet UIButton *star34;
+@property (strong, nonatomic) IBOutlet UIButton *star35;
+@property (strong, nonatomic) IBOutlet UIButton *btn1;
+@property (strong, nonatomic) IBOutlet UIButton *btn2;
+@property (strong, nonatomic) IBOutlet UIButton *btn3;
+@property (strong, nonatomic) IBOutlet UIButton *btn4;
+@property (strong, nonatomic) IBOutlet UIButton *btn5;
+@property (strong, nonatomic) IBOutlet UIButton *btn6;
+@property (strong, nonatomic) IBOutlet UIButton *btn7;
+@property (strong, nonatomic) IBOutlet UIButton *btn8;
+@property (strong, nonatomic) IBOutlet UIButton *btn9;
+@property (strong, nonatomic) IBOutlet UIButton *btn10;
+
+- (IBAction)star1:(id)sender;
+- (IBAction)star2:(id)sender;
+- (IBAction)star3:(id)sender;
+- (IBAction)star4:(id)sender;
+- (IBAction)star5:(id)sender;
+
+@end
+
+@implementation HomeAssessViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.title = @"评价";
+ 
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+static  float oneTag ;
+static  float twoTag ;
+static  float threeTag ;
+- (IBAction)FinishedBtn:(id)sender {
+    
+    
+    /*
+     userPhone	String	用户手机号(账号)	非空
+     onTime	float	准时的星级	非空
+     neat	float	整洁的星级	非空
+     appearance	float	外貌的星级	非空
+     orderID	int	要评价的订单ID	非空
+     label	int	标签串（神准时，整洁，）	非空
+     */
+    NSString *url = @"http://123.57.28.11:8080/jfsc_app/addHAssess.do";
+    NSMutableDictionary *pass = [[NSMutableDictionary alloc]init];
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    [pass setObject:user forKey:@"userPhone"];
+    NSLog(@"orderID=%@",_orderID);
+    [pass setObject:_orderID forKey:@"orderID"];
+  
+    NSString  *strFloat1 = [NSString stringWithFormat:@"%f",oneTag];
+    [pass setObject:strFloat1 forKey:@"onTime"];
+    NSString  *strFloat2 = [NSString stringWithFormat:@"%f",twoTag];
+    [pass setObject:strFloat2 forKey:@"neat"];
+    NSString  *strFloat3 = [NSString stringWithFormat:@"%f",threeTag];
+    [pass setObject:strFloat3 forKey:@"appearance"];
+    NSString *strDouhao = @",";
+    NSString *strs = [NSString stringWithFormat:@"%@%@%@%@%@%@",_lablestr1,strDouhao,_lablestr2,strDouhao,_lablestr3,strDouhao];
+    [pass setObject:strs forKey:@"label"];
+    AFHTTPRequestOperationManager *mgr2=[AFHTTPRequestOperationManager manager];
+    [mgr2 POST:url parameters:pass  success:^(AFHTTPRequestOperation * operation, id responsObject)
+     {
+         NSLog(@"%@",responsObject);
+         if ([[responsObject objectForKey:@"code"] isEqualToNumber:@1]) {
+             
+         HomeSucceedViewController *HSVC = [[HomeSucceedViewController alloc]init];
+         [self.navigationController pushViewController:HSVC animated:YES];
+             HSVC.lableStr = @"感谢您的评价,我们会继续努力!";
+        }
+    
+         else{
+             HomeSucceedViewController *HSVC = [[HomeSucceedViewController alloc]init];
+             [self.navigationController pushViewController:HSVC animated:YES];
+             HSVC.lableStr = @"评价失败";
+
+         }
+         
+     } failure:^(AFHTTPRequestOperation * operation, NSError * error)
+     {
+         
+         Toast *toa = [Toast makeText:@"网络连接失败请重试"];
+         [toa showWithType:ShortTime];
+         
+     }];
+    
+}
+
+- (IBAction)star1:(id)sender {
+
+        [self.star1 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+        oneTag = oneTag+1;
+}
+
+- (IBAction)star2:(id)sender {
+    
+    [self.star2  setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    oneTag = oneTag+1;
+
+}
+
+
+- (IBAction)star3:(id)sender {
+    
+    [self.star3 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    oneTag = oneTag+1;
+    self.star3.selected = NO;
+
+}
+
+- (IBAction)star4:(id)sender {
+    [self.star4 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    oneTag = oneTag+1;
+    self.star5.selected = NO;
+    
+}
+- (IBAction)star5:(id)sender {
+    [self.star5 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    oneTag = oneTag+1;
+
+}
+- (IBAction)star21:(id)sender {
+    [self.star21 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    twoTag = twoTag + 1;
+    self.star21.selected = NO;
+}
+
+- (IBAction)star22:(id)sender {
+    
+    [self.star22 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    twoTag = twoTag + 1;
+    self.star22.selected = NO;
+}
+
+- (IBAction)star23:(id)sender {
+    
+    [self.star23 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    twoTag = twoTag + 1;
+    self.star23.selected = NO;
+
+}
+
+- (IBAction)star24:(id)sender {
+    [self.star24 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    twoTag = twoTag + 1;
+    self.star24.selected = NO;
+    
+}
+- (IBAction)star25:(id)sender {
+    [self.star25 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    twoTag = twoTag + 1;
+    self.star25.selected = NO;
+}
+
+- (IBAction)star31:(id)sender {
+    [self.star31 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    threeTag = threeTag +1;
+    self.star31.selected = NO;
+}
+
+- (IBAction)star32:(id)sender {
+    
+    [self.star32 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    threeTag = threeTag +1;
+    self.star32.selected = NO;
+    
+}
+
+- (IBAction)star33:(id)sender {
+    
+    [self.star33 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    threeTag = threeTag +1;
+    self.star33.selected = NO;
+
+}
+
+- (IBAction)star34:(id)sender {
+    [self.star34 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    threeTag = threeTag +1;
+    self.star34.selected = NO;
+    
+
+    
+}
+- (IBAction)star35:(id)sender {
+    [self.star35 setImage:[UIImage imageNamed:@"star.png"] forState:(UIControlStateNormal)];
+    threeTag = threeTag +1;
+    self.star35.selected = NO;
+    
+
+}
+- (IBAction)btn1:(id)sender
+{
+    NSLog(@"拜托你");
+    _lablestr1 = self.btn1.titleLabel.text;
+    [self.btn1 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+}
+- (IBAction)btn2:(id)sender
+{
+     _lablestr2 = self.btn2.titleLabel.text;
+    [self.btn2 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+}
+- (IBAction)btn3:(id)sender
+{
+     _lablestr3 = self.btn3.titleLabel.text;
+    [self.btn3 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+- (IBAction)btn4:(id)sender
+{
+     _lablestr4 = self.btn4.titleLabel.text;
+    [self.btn4 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+- (IBAction)btn5:(id)sender
+{
+     _lablestr5 = self.btn5.titleLabel.text;
+    [self.btn5 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+- (IBAction)btn6:(id)sender
+{
+     _lablestr6 = self.btn6.titleLabel.text;
+    [self.btn6 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+- (IBAction)btn7:(id)sender
+{
+     _lablestr7 = self.btn7.titleLabel.text;
+    [self.btn7 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+    
+}
+- (IBAction)btn8:(id)sender
+{
+     _lablestr8 = self.btn1.titleLabel.text;
+    [self.btn8 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+    
+}
+- (IBAction)btn9:(id)sender
+{
+     _lablestr9 = self.btn8.titleLabel.text;
+    [self.btn9 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+- (IBAction)btn10:(id)sender
+{
+     _lablestr10 = self.btn9.titleLabel.text;
+    [self.btn10 setBackgroundImage:[UIImage imageNamed:@"btn00.png"] forState:(UIControlStateNormal)];
+
+}
+
+@end

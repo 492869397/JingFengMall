@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="return" rowHeight="265" id="KGk-i7-Jjw" customClass="ReturnTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="265"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="264"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z71-ui-Nsc" customClass="CellSubview">
+                        <rect key="frame" x="8" y="8" width="343" height="196"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="196" id="5AL-bi-UyY"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRW-iE-ecr">
+                        <rect key="frame" x="255" y="207" width="80" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="2AF-Pq-JAE"/>
+                        </constraints>
+                        <state key="normal" title="申请售后" backgroundImage="btn0.png">
+                            <color key="titleColor" red="1" green="0.60348136959999998" blue="0.32456906759999998" alpha="1" colorSpace="deviceRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="returnGoods:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4bK-UF-neP"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="z71-ui-Nsc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="87a-TR-X1h"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="CRW-iE-ecr" secondAttribute="trailing" constant="16" id="EEg-kr-rio"/>
+                    <constraint firstItem="CRW-iE-ecr" firstAttribute="top" secondItem="z71-ui-Nsc" secondAttribute="bottom" constant="3" id="EIx-wl-gDb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="CRW-iE-ecr" secondAttribute="bottom" id="Plf-OK-bie"/>
+                    <constraint firstItem="z71-ui-Nsc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="aUW-qp-YmQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="z71-ui-Nsc" secondAttribute="trailing" id="cMb-5F-P44"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="227.5" y="186.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn0.png" width="258" height="94"/>
+    </resources>
+</document>

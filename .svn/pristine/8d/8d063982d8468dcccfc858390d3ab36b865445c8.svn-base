@@ -1,0 +1,321 @@
+//
+//  HomeOrderViewController.m
+//  JingFengMall
+//
+//  Created by len on 16/5/9.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "HomeOrderViewController.h"
+#import "HomeInformationViewController.h"
+#import "HomeOrderViewController.h"
+#import "priceModel.h"
+#define URL @"http://123.57.28.11:8080/jfsc_app/selectHOrderByUserPhone.do"
+@interface HomeOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    UISegmentedControl *segment;
+    NSInteger _recoderIndex;
+}
+@property (nonatomic ,strong)NSMutableArray *array;
+@property (nonatomic ,strong)NSDictionary *Dic;
+@property (nonatomic ,strong)UITableView *tableView;
+@property (nonatomic ,strong)UIButton *DetailsBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIButton *StayEvaluateBtn;
+@property (strong, nonatomic) IBOutlet UIButton *StayFinishBtn;
+@property (strong, nonatomic) IBOutlet UIButton *StayFinishingBtn;
+- (IBAction)StayFinishBtn:(id)sender;
+- (IBAction)StayEvaluateBtn:(id)sender;
+
+
+/*
+ address = "北京北京市东城区";
+ completeState = "未完成";
+ createTime = 1463709211000;
+ employeeID = 6;
+ id = 51;
+ orderMoney = 100;
+ "out_trade_no" = 052009532993487;
+ payStr = "partner=\\\"2088221202798599\\\"&seller_id=\\\"rongronggroup@163.com\\\"&out_trade_no=\\\"052009532993487\\\"&subject=\\\"日常清洁服务\\\"&body=\\\"家政服务\\\"&total_fee=\\\"100.0\\\"&notify_url=\\\"http://123.57.28.11:8080/jfsc_app/aliPayReturn.do\\\"&service=\\\"mobile.securitypay.pay\\\"&payment_type=\\\"1\\\"&_input_charset=\\\"utf-8\\\"&it_b_pay=\\\"30m\\\"&return_url=\\\"m.alipay.com\\\"&sign=\\\"MH3owX50OMZUoUmCyHa25HIgXta1ykShR5wQs2TZHddxQCr5ECBWfDDDZVBdAk80rNjlnYvLHNu73Ln79nUeOc01Unu2gdX8Pzs9ENRpnUMMHvoBWYEHHQxLVP2dFpKxZ8z5GHjcwZka2Ke8bQv7ilFRM9yHMjLiSrOzNmHh1Ng=\\\"&sign_type=\\\"RSA\\\"";
+ paymentState = "待完成";
+ paymentTime = 1463709214000;
+ phone = "qwerty yip ";
+ price = "<null>";
+ remarks = "";
+ serviceTime = 1;
+ typeID = 8;
+ updoorTime = 1;
+ userPhone = 15910424144;
+ voucherMoney = 0;
+ "weixin_out_trade_no" = 221463709209023;
+ "weixin_payStr" = "{\\\"appid\\\":\\\"wx2f4cf3217b39691c\\\",\\\"timestamp\\\":\\\"1463709211\\\",\\\"noncestr\\\":\\\"4vwvn1shotwjsmp66jrjjba4oq76qks1\\\",\\\"package\\\":\\\"Sign=WXPay\\\",\\\"sign\\\":\\\"E2FA2D64E29208350A376D038472FD91\\\",\\\"partnerid\\\":\\\"1328614701\\\",\\\"prepayid\\\":\\\"wx201605200953319a941d42180387413580\\\"}";*/
+@end
+
+@implementation HomeOrderViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title= @"我的订单";
+    [self.view addSubview:self.tableView];
+//   [self.tableView addSubview:self.DetailsBtn];
+//    self.DetailsBtn.hidden = YES;
+    [self NSStringStay:@"待完成"];
+    [self.tableView reloadData];
+    
+}
+//-(UIButton *)DetailsBtn{
+//    if (!_DetailsBtn) {
+//        _DetailsBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+//        _DetailsBtn.frame = CGRectMake(-3, 114, SCREEN_WIDTH + 6 , 35);
+//        [_DetailsBtn setImage:[UIImage imageNamed:@"DetailsClick.png"] forState:(UIControlStateNormal)];
+//        [_DetailsBtn addTarget:self action:@selector(DetailsClick) forControlEvents:(UIControlEventTouchUpInside)];
+//        
+//        
+//    }
+//    return _DetailsBtn;
+//}
+
+-(void)DetailsClick{
+    HomeInformationViewController *HIVC = [[HomeInformationViewController alloc]init];
+    HIVC.typeId = _typeId;
+    HIVC.employeeID = _employeeID;
+    HIVC.btnSelect.backgroundColor = [UIColor clearColor];
+    [self.navigationController pushViewController:HIVC animated:YES];
+}
+-(NSMutableArray *)array
+{
+    if (!_array) {
+        _array = [NSMutableArray array];
+    }
+    return _array;
+}
+
+-(UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 114, SCREEN_WIDTH, SCREEN_HEIGHT - 114) style:(UITableViewStylePlain)];
+        _tableView.bounces = NO;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        _tableView.allowsSelection = NO;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        [_tableView registerNib:[UINib nibWithNibName:@"HomeOrderTableViewCell" bundle:nil] forCellReuseIdentifier:@"OrderCell"];
+
+        }
+    return _tableView;
+}
+//-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if (_recoderIndex == 0) {
+//        
+//        [cell.contentView viewWithTag:1].hidden = NO;
+//        [cell.contentView viewWithTag:2].hidden = YES;
+//        [cell.contentView viewWithTag:3].hidden = NO;
+//        
+//    }
+//    else{
+//        [cell.contentView viewWithTag:1].hidden = YES;
+//        [cell.contentView viewWithTag:2].hidden = NO;
+//        [cell.contentView viewWithTag:3].hidden = YES;
+//        if (self.UISCOrders.tag == 1) {
+//           UIButton* button = (UIButton*)[cell.contentView viewWithTag:2];
+//            button.titleLabel.text = @"待评价";
+//            [button.titleLabel sizeToFit];
+//        }
+//        else{
+//            
+//            UIButton* button = (UIButton*)[cell.contentView viewWithTag:2];
+//            button.titleLabel.text = @"待付款";
+//            [button.titleLabel sizeToFit];
+//        }
+//    
+//    }
+//
+//    
+//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString *identifer = @"OrderCell";
+    HomeOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
+
+    HomeOrderModel *HOmodel = self.array[indexPath.row];
+    cell.model = HOmodel;
+    cell.delegate = self;
+    
+    _typeId = cell.strID ;
+    _employeeID = cell.employeeID;
+    
+    
+    
+    NSLog(@"%@",cell.strID );
+    NSLog(@"%@",cell.employeeID );
+
+    if (_recoderIndex == 0) {
+        
+        [cell.contentView viewWithTag:1].hidden = NO;
+        [cell.contentView viewWithTag:2].hidden = YES;
+        [cell.contentView viewWithTag:3].hidden = NO;
+        [cell.contentView viewWithTag:4].hidden = YES;
+        
+    }
+    else if(_recoderIndex == 1){
+        
+        [cell.contentView viewWithTag:1].hidden = YES;
+        [cell.contentView viewWithTag:2].hidden = NO;
+        [cell.contentView viewWithTag:3].hidden = YES;
+        [cell.contentView viewWithTag:4].hidden = YES;
+    }
+    else{
+        [cell.contentView viewWithTag:1].hidden = YES;
+        [cell.contentView viewWithTag:2].hidden = YES;
+        [cell.contentView viewWithTag:3].hidden = YES;
+        [cell.contentView viewWithTag:4].hidden = NO;
+    }
+        return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.array.count;
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+      return 149;
+    }
+    return 120;
+    
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (IBAction)StayFinishBtn:(id)sender {
+    NSLog(@"1");
+    //[self.imageView setImage:[UIImage imageNamed:@"btn140.png"]];
+    [self NSStringStay:@"待完成"];
+    _recoderIndex = 0;
+    [_tableView reloadData];
+    
+    
+    [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1]];
+    [(UIButton*)sender setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    _StayEvaluateBtn.backgroundColor = [UIColor whiteColor];
+    [_StayEvaluateBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+    _StayFinishingBtn.backgroundColor = [UIColor whiteColor];
+    [_StayFinishingBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+    
+    
+}
+- (IBAction)StayEvaluateBtn:(id)sender {
+    NSLog(@"2");
+    //[self.imageView setImage:[UIImage imageNamed:@"btn130.png"]];
+    _recoderIndex = 1;
+    [_tableView reloadData];
+    [self NSStringStay:@"待评价"];
+    
+    [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1]];
+    [(UIButton*)sender setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    _StayFinishBtn.backgroundColor = [UIColor whiteColor];
+    [_StayFinishBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+    _StayFinishingBtn.backgroundColor = [UIColor whiteColor];
+    [_StayFinishingBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+
+}
+- (IBAction)StayFinishingBtn:(id)sender {
+    NSLog(@"2");
+    //[self.imageView setImage:[UIImage imageNamed:@"btn130.png"]];
+    _recoderIndex = 2;
+    [_tableView reloadData];
+    [self NSStringStay:@"待付款"];
+    
+    [(UIButton*)sender setBackgroundColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1]];
+    [(UIButton*)sender setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    _StayEvaluateBtn.backgroundColor = [UIColor whiteColor];
+    [_StayEvaluateBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+    _StayFinishBtn.backgroundColor = [UIColor whiteColor];
+    [_StayFinishBtn setTitleColor:[UIColor colorWithRed:0 green:190/255.0 blue:176/255.0 alpha:1] forState:UIControlStateNormal];
+    
+}
+-(void)NSStringStay:(NSString *)stay{
+    NSMutableDictionary *params2=[NSMutableDictionary dictionary];
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    [params2 setObject:stay forKey:@"str"];
+    //18821614031
+    [params2 setObject:user forKey:@"userPhone"];
+    NSLog(@"%@",user);
+    NSLog(@"%@",params2);
+    
+    AFHTTPRequestOperationManager *mgr2=[AFHTTPRequestOperationManager manager];
+    [mgr2 POST:URL parameters:params2  success:^(AFHTTPRequestOperation * operation, id responsObject)
+     {
+         NSLog(@"%@",responsObject);
+         if (self.StayEvaluateBtn.selected == YES) {
+             
+             
+             if ([[responsObject objectForKey:@"code"] isEqualToNumber:@-1]) {
+                 
+                 NSString *strInfo = [NSString stringWithFormat:@"您还没有%@的家政订单",stay];
+                 Toast *toa = [Toast makeText:strInfo];
+                 [toa showWithType:ShortTime];
+                 
+             }
+             else{
+//                 self.DetailsBtn.hidden = NO;
+                 
+             }
+
+         }
+         else {
+             if ([[responsObject objectForKey:@"code"] isEqualToNumber:@-1]) {
+                 self.DetailsBtn.hidden = YES;
+                 NSString *strInfo = [NSString stringWithFormat:@"您还没有%@的家政订单",stay];
+                 Toast *toa = [Toast makeText:strInfo];
+                 [toa showWithType:ShortTime];
+                 
+             }
+             else{
+                 self.DetailsBtn.hidden = NO;
+                 
+             }
+        
+         }
+         
+
+         NSMutableArray *dataArray = [NSMutableArray arrayWithArray:responsObject[@"list"]];
+         [self.array removeAllObjects];
+        
+         for (NSMutableDictionary *dict in dataArray)
+         {
+             HomeOrderModel *model = [HomeOrderModel initWithDict:dict];
+             [self.array addObject:model];
+        
+         }
+         [self.tableView reloadData];
+     } failure:^(AFHTTPRequestOperation * operation, NSError * error)
+     {
+         
+     }];
+
+}
+@end

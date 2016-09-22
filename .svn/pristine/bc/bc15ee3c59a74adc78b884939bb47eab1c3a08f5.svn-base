@@ -1,0 +1,106 @@
+//
+//  PersonnalContentViewController.m
+//  JingFengMall
+//
+//  Created by mac on 16/3/11.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "PersonnalContentViewController.h"
+#import "AcconutTableViewController.h"
+#import "PersonnalCenterViewController.h"
+#import "DistributionViewController.h"
+#import "MyOrderViewController.h"
+#import "CouponViewController.h"
+#import "ReturnTableViewController.h"
+#import "RDVTabBarController.h"
+#import "RechargeView.h"
+#import "VipViewController.h"
+
+
+@interface PersonnalContentViewController ()
+
+@end
+
+@implementation PersonnalContentViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setSubview];
+}
+
+-(void)setSubview
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(enterAccountView:)];
+    [self.account addGestureRecognizer:tap];
+    
+    _touxiang.layer.cornerRadius = _touxiang.frame.size.height/2.0;
+    
+}
+
+-(void)enterAccountView:(UITapGestureRecognizer *)gesture
+{
+    AcconutTableViewController *view = [[AcconutTableViewController alloc]init];
+    [((PersonnalCenterViewController*)self.delegate).navigationController pushViewController:view animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)enterDistributionView:(id)sender {
+    DistributionViewController *dis = [[DistributionViewController alloc]init];
+    [((PersonnalCenterViewController*)self.delegate).rdv_tabBarController.navigationController pushViewController:dis animated:YES];
+}
+
+- (IBAction)enterCouponView:(id)sender {
+    CouponViewController *coupon = [[CouponViewController alloc]init];
+    [((PersonnalCenterViewController*)self.delegate).rdv_tabBarController.navigationController pushViewController:coupon animated:YES];
+}
+
+- (IBAction)recharge:(id)sender {
+    
+    RechargeView *view = [[[NSBundle mainBundle]loadNibNamed:@"RechargeView" owner:nil options:nil]firstObject];
+    
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    view.delegate = self.delegate;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    
+}
+
+- (IBAction)enterVIPView:(id)sender {
+    
+    VipViewController *vip = [[VipViewController alloc]init];
+    [((PersonnalCenterViewController*)self.delegate).rdv_tabBarController.navigationController pushViewController:vip animated:YES];
+    
+}
+
+- (IBAction)enterOrderView:(UIButton*)sender {
+    
+    MyOrderViewController *order = [[MyOrderViewController alloc]init];
+    
+    order.OrderTypeArr = @[@"全部",@"待付款",@"待发货",@"待收货",@"待评价"];
+    
+    if (sender.tag <=2) {
+        order.mallOrderType = order.OrderTypeArr[sender.tag-1];
+    }else
+    {
+        order.mallOrderType = order.OrderTypeArr[sender.tag];
+    }
+    
+    
+    [((PersonnalCenterViewController*)self.delegate).rdv_tabBarController.navigationController pushViewController:order animated:YES];
+    
+}
+
+- (IBAction)enterReturnView:(id)sender {
+    
+    ReturnTableViewController *ret = [[ReturnTableViewController alloc]init];
+    [((PersonnalCenterViewController*)self.delegate).rdv_tabBarController.navigationController pushViewController:ret animated:YES];
+}
+
+@end

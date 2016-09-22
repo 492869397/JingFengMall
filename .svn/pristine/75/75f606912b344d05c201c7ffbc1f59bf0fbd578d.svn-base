@@ -1,0 +1,18 @@
+//
+//  GoodsDetailTitleView.h
+//  JingFengMall
+//
+//  Created by mac on 16/4/6.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface GoodsDetailTitleView : UIView
+
+@property (strong, nonatomic) IBOutlet UIView *scroll;
+@property (strong, nonatomic) IBOutlet UILabel *title;
+@property (strong, nonatomic) IBOutlet UILabel *price;
+@property (strong, nonatomic) IBOutlet UILabel *commentNumber;
+
+@end

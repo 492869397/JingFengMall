@@ -1,0 +1,240 @@
+//
+//  CouponViewController.m
+//  JingFengMall
+//
+//  Created by mac on 16/3/15.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "CouponViewController.h"
+#import "CouponTableViewCell.h"
+#import "CouponModel.h"
+#import "CommitOrderViewController.h"
+#import "AttornView.h"
+#import "CommitOrderViewController.h"
+
+@interface CouponViewController ()
+{
+    IBOutlet NSLayoutConstraint *buttonHeight;
+    UIView *sperate;
+}
+@end
+
+@implementation CouponViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"现金券";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.array = [NSMutableArray array];
+    self.sortArray = [NSMutableArray array];
+    
+    self.tableview.rowHeight = 140;
+    
+    //选中的按钮下面的线
+    sperate = [[UIView alloc]initWithFrame:CGRectMake(0, 37, (kMainScreenWidth-3)/4.0, 3)];
+    sperate.backgroundColor = [UIColor redColor];
+    [[self.view viewWithTag:100] addSubview:sperate];
+    
+    if ([_delegate isKindOfClass:[CommitOrderViewController class]]) {
+        
+        buttonHeight.constant = 0;
+        
+    }
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self fresh];
+}
+
+-(void)fresh
+{
+    Network *net = [[Network alloc]init];
+    NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:1];
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    [pass setObject:user forKey:@"userPhone"];
+    
+    [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/selectUserByUserPhone.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+            
+            [_array removeAllObjects];
+            
+            NSArray *arr = [responseObject objectForKey:@"listVoucher"];
+            
+            
+            for (NSDictionary *dic in arr) {
+                
+                CouponModel *coupon = [[CouponModel alloc]initWithCouponID:[dic objectForKey:@"id"] couponType:[dic objectForKey:@"voucherType"] state:[dic objectForKey:@"state"] startDate:[dic objectForKey:@"auth_start_date"] endDate:[dic objectForKey:@"auth_end_date"]];
+                
+                [_array addObject:coupon];
+                
+                [self assortCoupon];
+            }
+            
+           
+            
+            
+        }
+    }];
+
+}
+
+#pragma mark - 对优惠券进行分类
+-(void)assortCoupon
+{
+    [_sortArray removeAllObjects];
+    
+    for (CouponModel *cou in _array) {
+        switch (_assortType) {
+            case CanUse:
+                if ([cou.state isEqualToString:@"未使用"] &&
+                    cou.endDate >= [[NSDate date] timeIntervalSince1970])
+                    
+                    [_sortArray addObject:cou];
+                
+                break;
+            
+            case CanNotUse:
+                
+                break;
+                
+            case HaveUse:
+                
+                if ([cou.state isEqualToString:@"已使用"])
+                
+                    [_sortArray addObject:cou];
+                
+                break;
+            
+            case HaveExpire:
+                
+                if ([cou.state isEqualToString:@"未使用"] &&
+                    cou.endDate < [[NSDate date] timeIntervalSince1970])
+                
+                    [_sortArray addObject:cou];
+                
+                break;
+            
+            default:
+                break;
+        }
+    }
+    
+    if (_sortArray.count == 0) {
+        Toast *toa = [Toast makeText:@"暂时没有当前类型的现金券"];
+        [toa showWithType:ShortTime];
+    }
+    
+    [self.tableview reloadData];
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma tableView DataSouce
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return  1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.sortArray.count;
+}
+
+#pragma tableView delegate
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuse"];
+    
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"CouponTableViewCell" owner:nil options:nil]firstObject];
+        
+        cell.contentView.bounds = CGRectMake(0 , 0, kMainScreenWidth, 140);
+        
+        cell.priceCenter.constant *= kMainScreenWidth/480.0;
+        cell.describeCenter.constant *= kMainScreenWidth/480.0;
+    }
+    
+    CouponModel *cou = _sortArray[indexPath.row];
+    
+    cell.price.text = [NSString stringWithFormat:@"¥%@",cou.couponType];
+    
+    cell.describe.text = @"这就是优惠券，有使用时间限制\n你懂得";
+    cell.describe.adjustsFontSizeToFitWidth = YES;
+    
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    CouponTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.bgPic.image = [UIImage imageNamed:@"beijing1"];
+    
+    if ([self.delegate isKindOfClass:[CommitOrderViewController class]]) {
+        
+        CouponModel *coupon = _sortArray[indexPath.row];
+        
+        CommitOrderViewController *commit = (CommitOrderViewController*)self.delegate;
+        
+        if (commit.totalPrice <= coupon.couponType.doubleValue) {
+            
+            Toast *toa = [Toast makeText:@"付款金额低于该面值，不能使用"];
+            [toa showWithType:ShortTime];
+            
+        }else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+            CommitOrderViewController *comment = (CommitOrderViewController*)self.delegate;
+            
+            comment.coupon = coupon;
+            
+            [comment calculatePrice];
+        }
+        
+        return;
+    }
+    
+    if (_assortType == CanUse) {
+        AttornView *att = [[[NSBundle mainBundle]loadNibNamed:@"AttornView" owner:nil options:nil]firstObject];
+        
+        att.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        
+        att.cou = _sortArray[indexPath.row];
+        
+        [[UIApplication sharedApplication].keyWindow addSubview:att];
+    }else
+    {
+        Toast *toa = [Toast makeText:@"该现金券暂时不可用"];
+        [toa showWithType:ShortTime];
+    }
+    
+    
+}
+
+- (IBAction)assortCoupon:(UIButton*)sender {
+    
+    sperate.center = CGPointMake(sender.center.x , sperate.center.y) ;
+    
+    self.assortType = (int)sender.tag-1;
+    
+    [self assortCoupon];
+    
+}
+
+
+@end

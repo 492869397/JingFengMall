@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeThredViewController">
+            <connections>
+                <outlet property="imageview" destination="5t7-nT-RcZ" id="hQi-5A-iB2"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USM-N9-hvY">
+                    <rect key="frame" x="10" y="617" width="355" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="sdA-hF-fdI"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="btn7.png"/>
+                    <connections>
+                        <action selector="beSpokeBtn:" destination="-1" eventType="touchUpInside" id="av5-Jp-sJj"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5t7-nT-RcZ">
+                    <rect key="frame" x="0.0" y="74" width="375" height="533"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="USM-N9-hvY" firstAttribute="top" secondItem="5t7-nT-RcZ" secondAttribute="bottom" constant="10" id="4yh-6h-ro4"/>
+                <constraint firstAttribute="trailing" secondItem="5t7-nT-RcZ" secondAttribute="trailing" id="AjG-Vy-Dz8"/>
+                <constraint firstAttribute="bottom" secondItem="USM-N9-hvY" secondAttribute="bottom" constant="10" id="MbF-Dl-Pfd"/>
+                <constraint firstItem="5t7-nT-RcZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OHK-QX-s0Y"/>
+                <constraint firstItem="USM-N9-hvY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="S7C-8T-8aY"/>
+                <constraint firstAttribute="trailing" secondItem="USM-N9-hvY" secondAttribute="trailing" constant="10" id="iWy-tl-du3"/>
+                <constraint firstItem="5t7-nT-RcZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="oxU-Lb-qD4"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="718.5" y="120.5"/>
+        </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4zL-3J-2ac">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="14"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button" image="btn6.png"/>
+            <point key="canvasLocation" x="647" y="546"/>
+        </button>
+    </objects>
+    <resources>
+        <image name="btn6.png" width="1050" height="113"/>
+        <image name="btn7.png" width="1050" height="113"/>
+    </resources>
+</document>

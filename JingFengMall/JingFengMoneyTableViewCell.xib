@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuse" rowHeight="69" id="KGk-i7-Jjw" customClass="JingFengMoneyTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="354" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="354" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnE-ic-4Kb">
+                        <rect key="frame" x="13" y="39" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl7-Dn-mbU">
+                        <rect key="frame" x="299" y="24" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.97254908080000002" green="0.33333334329999997" blue="0.16862745579999999" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付车费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuO-ye-XHP">
+                        <rect key="frame" x="13" y="13" width="68" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Dl7-Dn-mbU" secondAttribute="trailing" constant="5" id="0O5-Im-ZQz"/>
+                    <constraint firstItem="xuO-ye-XHP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="K9A-bp-dYs"/>
+                    <constraint firstItem="xuO-ye-XHP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="Xd1-7u-TE0"/>
+                    <constraint firstItem="Dl7-Dn-mbU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jS5-Cj-RMh"/>
+                    <constraint firstItem="SnE-ic-4Kb" firstAttribute="leading" secondItem="xuO-ye-XHP" secondAttribute="leading" id="jeC-vg-oFy"/>
+                    <constraint firstItem="SnE-ic-4Kb" firstAttribute="top" secondItem="xuO-ye-XHP" secondAttribute="bottom" constant="5" id="ySQ-ph-knj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="money" destination="Dl7-Dn-mbU" id="Der-Ty-O8Q"/>
+                <outlet property="time" destination="SnE-ic-4Kb" id="uPs-IA-UEs"/>
+                <outlet property="title" destination="xuO-ye-XHP" id="0Rk-hX-HmC"/>
+            </connections>
+            <point key="canvasLocation" x="259" y="242.5"/>
+        </tableViewCell>
+    </objects>
+</document>

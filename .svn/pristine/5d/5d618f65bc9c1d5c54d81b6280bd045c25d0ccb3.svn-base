@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment version="2096" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HintView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tishi_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZWq-F2-w42">
+                    <rect key="frame" x="50" y="210" width="500" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="Z2i-TA-5Qd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的用车订单已被接收,请在&quot;首页-用车-我的订单&quot;中查看" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Lf-xC-Ant">
+                    <rect key="frame" x="70" y="293" width="450" height="20"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-rc-RFU">
+                    <rect key="frame" x="258" y="220" width="84" height="58"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.69641755756578949" alpha="0.47999999999999998" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="eUs-rc-RFU" secondAttribute="centerX" id="4in-hr-BaH"/>
+                <constraint firstItem="ZWq-F2-w42" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="ChE-dT-lHU"/>
+                <constraint firstItem="2Lf-xC-Ant" firstAttribute="leading" secondItem="ZWq-F2-w42" secondAttribute="leading" constant="20" id="KQt-h3-eba"/>
+                <constraint firstItem="2Lf-xC-Ant" firstAttribute="top" secondItem="eUs-rc-RFU" secondAttribute="bottom" constant="15" id="RVm-QB-DDH"/>
+                <constraint firstItem="2Lf-xC-Ant" firstAttribute="trailing" secondItem="ZWq-F2-w42" secondAttribute="trailing" constant="-30" id="UJe-kX-ot1"/>
+                <constraint firstItem="eUs-rc-RFU" firstAttribute="top" secondItem="ZWq-F2-w42" secondAttribute="top" constant="10" id="YWm-XS-09W"/>
+                <constraint firstAttribute="centerX" secondItem="ZWq-F2-w42" secondAttribute="centerX" id="e3g-cx-t3h"/>
+                <constraint firstAttribute="centerY" secondItem="ZWq-F2-w42" secondAttribute="centerY" id="l0H-cO-BaW"/>
+                <constraint firstItem="eUs-rc-RFU" firstAttribute="leading" secondItem="ZWq-F2-w42" secondAttribute="trailing" constant="-139" id="q20-32-8cU"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="q20-32-8cU"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="msg" destination="2Lf-xC-Ant" id="7XK-bh-9gH"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="right_03.png" width="84" height="58"/>
+        <image name="tishi_03.png" width="516" height="373"/>
+    </resources>
+</document>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoViewController">
+            <connections>
+                <outlet property="button" destination="eoy-ck-IBO" id="CJ9-Hx-xAe"/>
+                <outlet property="photo" destination="M38-mL-Op7" id="MVf-Yv-h6o"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册背景.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oxh-Lv-cCi">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tishi_03.png" translatesAutoresizingMaskIntoConstraints="NO" id="M38-mL-Op7">
+                    <rect key="frame" x="20" y="207" width="268" height="130"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-WR-n2A">
+                    <rect key="frame" x="272" y="100" width="57" height="57"/>
+                    <state key="normal" image="注册03_03.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectPhoto:" destination="-1" eventType="touchUpInside" id="vrq-qC-w15"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-ck-IBO">
+                    <rect key="frame" x="70" y="455" width="460" height="44"/>
+                    <state key="normal" title="上传" backgroundImage="按钮_03.png">
+                        <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="confirm:" destination="-1" eventType="touchUpInside" id="h1z-JI-dEB"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册03_07.png" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-6I-Chz">
+                    <rect key="frame" x="318" y="207" width="267" height="130"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="265" id="4gg-bf-M0z"/>
+                        <constraint firstAttribute="height" constant="130" id="Olg-KI-Hwh"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="4gg-bf-M0z"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击加号上传手持身份证照片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="in6-gJ-tMw">
+                    <rect key="frame" x="150" y="361" width="300" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Ixz-UM-5ni"/>
+                        <constraint firstAttribute="width" constant="300" id="ZVa-99-mOS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="oxh-Lv-cCi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="722-Bb-2eu"/>
+                <constraint firstItem="oxh-Lv-cCi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7aR-eR-wdp"/>
+                <constraint firstAttribute="centerX" secondItem="eoy-ck-IBO" secondAttribute="centerX" id="81K-qQ-NKl"/>
+                <constraint firstAttribute="trailing" secondItem="oxh-Lv-cCi" secondAttribute="trailing" id="9EF-8p-3gX"/>
+                <constraint firstAttribute="bottom" secondItem="oxh-Lv-cCi" secondAttribute="bottom" id="EJV-1r-gDZ"/>
+                <constraint firstItem="eoy-ck-IBO" firstAttribute="top" secondItem="in6-gJ-tMw" secondAttribute="bottom" constant="50" id="Gx3-TV-VWV"/>
+                <constraint firstItem="eoy-ck-IBO" firstAttribute="width" secondItem="in6-gJ-tMw" secondAttribute="width" id="Igw-mH-a6j"/>
+                <constraint firstItem="M38-mL-Op7" firstAttribute="width" secondItem="eeI-6I-Chz" secondAttribute="width" id="KTE-8r-6JX"/>
+                <constraint firstItem="eoy-ck-IBO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="LCc-CA-D3n"/>
+                <constraint firstItem="M38-mL-Op7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="NJZ-Hx-ReN"/>
+                <constraint firstItem="eoy-ck-IBO" firstAttribute="height" secondItem="in6-gJ-tMw" secondAttribute="height" id="T82-GP-UX0"/>
+                <constraint firstItem="M38-mL-Op7" firstAttribute="top" secondItem="SAS-WR-n2A" secondAttribute="bottom" constant="50" id="Tn2-UJ-ogA"/>
+                <constraint firstAttribute="trailing" secondItem="eeI-6I-Chz" secondAttribute="trailing" constant="15" id="VK0-8j-EK8"/>
+                <constraint firstAttribute="centerX" secondItem="SAS-WR-n2A" secondAttribute="centerX" id="Xbq-xu-ZyI"/>
+                <constraint firstItem="in6-gJ-tMw" firstAttribute="top" secondItem="M38-mL-Op7" secondAttribute="bottom" constant="24" id="YgI-t6-lvu"/>
+                <constraint firstItem="eeI-6I-Chz" firstAttribute="leading" secondItem="M38-mL-Op7" secondAttribute="trailing" constant="30" id="ZVQ-gC-FKS"/>
+                <constraint firstItem="SAS-WR-n2A" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="itB-dO-Wyj"/>
+                <constraint firstAttribute="centerX" secondItem="in6-gJ-tMw" secondAttribute="centerX" id="qNW-Cd-mmM"/>
+                <constraint firstItem="M38-mL-Op7" firstAttribute="height" secondItem="eeI-6I-Chz" secondAttribute="height" id="wWE-Qr-S54"/>
+                <constraint firstItem="M38-mL-Op7" firstAttribute="centerY" secondItem="eeI-6I-Chz" secondAttribute="centerY" id="ypM-8P-dDM"/>
+                <constraint firstAttribute="trailing" secondItem="eoy-ck-IBO" secondAttribute="trailing" constant="70" id="z7o-MZ-SQ3"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Igw-mH-a6j"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="tishi_03.png" width="516" height="373"/>
+        <image name="按钮_03.png" width="190" height="100"/>
+        <image name="注册03_03.png" width="57" height="57"/>
+        <image name="注册03_07.png" width="159" height="119"/>
+        <image name="注册背景.jpg" width="750" height="1334"/>
+    </resources>
+</document>

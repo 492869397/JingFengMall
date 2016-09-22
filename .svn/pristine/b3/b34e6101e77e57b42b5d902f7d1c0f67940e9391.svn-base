@@ -1,0 +1,19 @@
+//
+//  ZhiFuView.h
+//  test
+//
+//  Created by mac on 16/4/9.
+//  Copyright © 2016年 mac. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface ZhiFuView : UIView
+
+@property (weak, nonatomic) IBOutlet UIView *subView;
+@property(assign,nonatomic)id delegate;
+
+@property(strong,nonatomic)NSNumber *num;
+@property(strong,nonatomic)NSString *module;
+
+@end

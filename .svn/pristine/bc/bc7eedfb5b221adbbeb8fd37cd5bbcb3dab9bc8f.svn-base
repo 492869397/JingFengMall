@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="RechargeView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJK-5g-BJ3">
+                    <rect key="frame" x="150" y="197" width="300" height="266"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E0i-s5-hFA">
+                            <rect key="frame" x="63" y="15" width="156" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgC-Aa-pug">
+                            <rect key="frame" x="63" y="60" width="68" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ykt-B9-Vy0">
+                            <rect key="frame" x="63" y="151" width="175" height="40"/>
+                            <inset key="titleEdgeInsets" minX="-80" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="135" maxY="5"/>
+                            <state key="normal" title="支付宝" image="100x100.png" backgroundImage="btn0.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="aliPay:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="T8n-kj-HX3"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am9-tE-9tS">
+                            <rect key="frame" x="219" y="18" width="19" height="23"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="zrj-LQ-Kcp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="zrj-LQ-Kcp"/>
+                                </mask>
+                            </variation>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pM-fS-xEK">
+                            <rect key="frame" x="63" y="206" width="175" height="40"/>
+                            <state key="normal" title="取消" backgroundImage="btn0.png">
+                                <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Tzc-vb-xKi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGO-Jf-Jbc">
+                            <rect key="frame" x="63" y="96" width="175" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="175" id="jFn-gX-tk2"/>
+                                <constraint firstAttribute="height" constant="40" id="uZl-fZ-Dzf"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="-70" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="135" maxY="5"/>
+                            <state key="normal" title="微信钱包" image="micro_messenger.png" backgroundImage="btn0.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="weixinPay:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="av4-Hs-4oJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="am9-tE-9tS" firstAttribute="leading" secondItem="E0i-s5-hFA" secondAttribute="trailing" id="6oQ-tJ-L0X"/>
+                        <constraint firstItem="IGO-Jf-Jbc" firstAttribute="top" secondItem="BgC-Aa-pug" secondAttribute="bottom" constant="15" id="AG7-EC-Zvb"/>
+                        <constraint firstAttribute="bottom" secondItem="Ykt-B9-Vy0" secondAttribute="bottom" constant="29" id="AuX-ee-rvj"/>
+                        <constraint firstItem="0pM-fS-xEK" firstAttribute="leading" secondItem="IGO-Jf-Jbc" secondAttribute="leading" id="CHb-EB-UYp"/>
+                        <constraint firstItem="IGO-Jf-Jbc" firstAttribute="centerX" secondItem="dJK-5g-BJ3" secondAttribute="centerX" id="ChQ-A8-hb7"/>
+                        <constraint firstItem="Ykt-B9-Vy0" firstAttribute="top" secondItem="IGO-Jf-Jbc" secondAttribute="bottom" constant="15" id="EoR-f7-K3W"/>
+                        <constraint firstItem="0pM-fS-xEK" firstAttribute="width" secondItem="IGO-Jf-Jbc" secondAttribute="width" id="G4X-Mb-vWD"/>
+                        <constraint firstItem="E0i-s5-hFA" firstAttribute="top" secondItem="dJK-5g-BJ3" secondAttribute="top" constant="15" id="HBs-tU-RJb"/>
+                        <constraint firstItem="am9-tE-9tS" firstAttribute="trailing" secondItem="IGO-Jf-Jbc" secondAttribute="trailing" id="MCi-Hu-wOn"/>
+                        <constraint firstItem="0pM-fS-xEK" firstAttribute="centerX" secondItem="IGO-Jf-Jbc" secondAttribute="centerX" id="QSH-n4-O1L"/>
+                        <constraint firstItem="Ykt-B9-Vy0" firstAttribute="height" secondItem="IGO-Jf-Jbc" secondAttribute="height" id="QnD-uD-qS5"/>
+                        <constraint firstItem="Ykt-B9-Vy0" firstAttribute="width" secondItem="IGO-Jf-Jbc" secondAttribute="width" id="SWu-he-aNS"/>
+                        <constraint firstItem="Ykt-B9-Vy0" firstAttribute="leading" secondItem="E0i-s5-hFA" secondAttribute="leading" id="TsT-Ld-38B"/>
+                        <constraint firstItem="0pM-fS-xEK" firstAttribute="top" secondItem="Ykt-B9-Vy0" secondAttribute="bottom" constant="15" id="Y86-et-GE9"/>
+                        <constraint firstItem="BgC-Aa-pug" firstAttribute="top" secondItem="E0i-s5-hFA" secondAttribute="bottom" constant="15" id="b0z-Xg-Nf8"/>
+                        <constraint firstItem="0pM-fS-xEK" firstAttribute="height" secondItem="IGO-Jf-Jbc" secondAttribute="height" id="f8R-kh-rsG"/>
+                        <constraint firstAttribute="bottom" secondItem="0pM-fS-xEK" secondAttribute="bottom" constant="20" id="gSF-86-enU"/>
+                        <constraint firstItem="IGO-Jf-Jbc" firstAttribute="width" secondItem="E0i-s5-hFA" secondAttribute="width" id="l5F-Fi-V0x"/>
+                        <constraint firstItem="am9-tE-9tS" firstAttribute="centerY" secondItem="E0i-s5-hFA" secondAttribute="centerY" id="lhx-kQ-yN2"/>
+                        <constraint firstItem="IGO-Jf-Jbc" firstAttribute="leading" secondItem="E0i-s5-hFA" secondAttribute="leading" id="qmH-TC-s8v"/>
+                        <constraint firstItem="am9-tE-9tS" firstAttribute="centerX" secondItem="dJK-5g-BJ3" secondAttribute="centerX" id="t8q-LT-q4R"/>
+                        <constraint firstItem="E0i-s5-hFA" firstAttribute="centerX" secondItem="dJK-5g-BJ3" secondAttribute="centerX" id="uGF-uR-V8S"/>
+                        <constraint firstAttribute="width" constant="300" id="xe8-RM-5DS"/>
+                        <constraint firstItem="BgC-Aa-pug" firstAttribute="leading" secondItem="E0i-s5-hFA" secondAttribute="leading" id="yRI-Bw-d8i"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="uGF-uR-V8S"/>
+                            <exclude reference="l5F-Fi-V0x"/>
+                            <exclude reference="AuX-ee-rvj"/>
+                            <exclude reference="QSH-n4-O1L"/>
+                            <exclude reference="t8q-LT-q4R"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="0.45000000000000001" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="dJK-5g-BJ3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="30" id="8O4-tf-AWH"/>
+                <constraint firstItem="dJK-5g-BJ3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="30" id="L5u-CF-c8L"/>
+                <constraint firstItem="dJK-5g-BJ3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TMa-W6-rWI"/>
+                <constraint firstAttribute="bottom" secondItem="dJK-5g-BJ3" secondAttribute="bottom" constant="150" id="bdn-EY-fSF"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="L5u-CF-c8L"/>
+                    <exclude reference="bdn-EY-fSF"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="price" destination="E0i-s5-hFA" id="wiG-PY-D6x"/>
+            </connections>
+            <point key="canvasLocation" x="104" y="309"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="100x100.png" width="100" height="100"/>
+        <image name="btn0.png" width="258" height="94"/>
+        <image name="micro_messenger.png" width="89" height="73"/>
+    </resources>
+</document>

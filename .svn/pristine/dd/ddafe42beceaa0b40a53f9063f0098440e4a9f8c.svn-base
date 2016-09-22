@@ -1,0 +1,90 @@
+//
+//  AttornView.m
+//  JingFengMall
+//
+//  Created by mac on 16/4/17.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "AttornView.h"
+#import "JingFengMoneyViewController.h"
+
+@implementation AttornView
+
+-(void)willMoveToSuperview:(UIView *)newSuperview
+{
+    self.subview.layer.cornerRadius = 15;
+}
+
+- (IBAction)confirm:(id)sender {
+    
+    if ([self validateMobile:self.phone.text] &&
+        [self isCoinInt]
+        ) {
+        
+        NSString *phone = [[NSUserDefaults standardUserDefaults]objectForKey:@"userPhone"];
+        NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:3];
+        [pass setObject:phone forKey:@"userPhone"];
+        
+        [pass setObject:_phone.text forKey:@"sendPhone"];
+        
+        NSNumber *coin = [NSNumber numberWithInteger:_coin.text.integerValue];
+        [pass setObject:coin forKey:@"coinNumber"];
+        
+        Network *net = [[Network alloc]init];
+        [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/mCoinSend.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            NSString *msg = [responseObject objectForKey:@"msg"];
+            Toast *toa = [Toast makeText:msg];
+            [toa showWithType:ShortTime];
+            
+            if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+                
+                [self removeFromSuperview];
+
+                JingFengMoneyViewController *JF = (JingFengMoneyViewController*)(self.delegate);
+                [JF fresh];
+            }
+            
+            
+        }];
+        
+    }
+    
+}
+
+- (IBAction)cancel:(id)sender {
+    
+    [self removeFromSuperview];
+}
+
+-(BOOL)isCoinInt
+{
+    NSString *coin = _coin.text;
+    if (fabs(coin.integerValue - coin.floatValue)<0.001) {
+        return YES;
+    }
+    
+    Toast *toa = [Toast makeText:@"支付金额只能为整数"];
+    [toa showWithType:ShortTime];
+    
+    return NO;
+}
+
+//判断是否是手机号
+- (BOOL)validateMobile:(NSString *)mobileNum
+{
+    
+    if (mobileNum.length == 11)
+    {
+        return YES;
+    }else
+    {
+        Toast *toast = [Toast makeText:@"请输入正确的手机号"];
+        [toast showWithType:ShortTime];
+        
+        return NO;
+    }
+}
+
+@end

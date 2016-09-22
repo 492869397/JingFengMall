@@ -1,0 +1,92 @@
+//
+//  PrefixHeader.pch
+//  JingFengMall
+//
+//  Created by len on 16/1/20.
+//  Copyright (c) 2016年 JingFeng. All rights reserved.
+//
+
+#ifndef JingFengMall_PrefixHeader_pch
+#define JingFengMall_PrefixHeader_pch
+
+#import "UIKit/UIKit.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import "UIViewController+NavigationBar.h"
+#import "Network.h"
+#import "Define.h"
+#import "MBProgressHUD.h"
+#import "Toast.h"
+
+//订单被接受的通知关键字
+#define ORDERBYRECIVED @"orderByRecived"
+
+#define URL_LOGIN @"http://123.57.28.11:8080/jfsc_app/login.do"
+#define ACCOUNT @"userPhone"
+#define PASSWORD @"pwd"
+
+//用车人注册
+//#define URL_REGISTE @"http://123.57.28.11:8080/jfsc_app/register.do"
+#define NAME @"name"
+#define SEX @"sex"
+#define PHOTO @"file"
+
+//注册User用户基本信息接口:
+#define URL_REGISTEINFO @"http://123.57.28.11:8080/jfsc_app/registerInfo.do"
+
+//修改密码接口
+#define URL_CHANGEPASSWORD @"http://123.57.28.11:8080/jfsc_app/updatePwd.do"
+
+//提交订单
+#define URL_COMMITORDER @"http://123.57.28.11:8080/jfsc_app/createOrder.do"
+
+//车主注册
+#define URL_DIVERREGIST @"http://123.57.28.11:8080/jfsc_app/saveUserCar.do"
+
+//获取指定用户的车辆信息接口
+#define URL_GETSELFCARMASSAGE @"http://123.57.28.11:8080/jfsc_app/selectUserCar.do"
+
+//上传车主照片接口
+#define URL_DIVERPHOTO @"http://123.57.28.11:8080/jfsc_app/register.do"
+
+//获得用户照片
+#define URL_PHOTO @"http://123.57.28.11:8080/jfsc_app/selectUserPhotoAndInfo.do"
+
+//账号是否存在
+#define URL_ISEXIT @"http://123.57.28.11:8080/jfsc_app/selectUser.do"
+
+//存储位置接口
+#define URL_SAVEPOSITION @"http://123.57.28.11:8080/jfsc_app/saveUserPosition.do"
+
+//获取附近的车
+#define URL_CLOSECARS @"http://123.57.28.11:8080/jfsc_app/selectOtherPosition.do"
+
+//获取指定类型的附近的车
+#define URL_CLOSECARSBYTYPE @"http://123.57.28.11:8080/jfsc_app/selectOtherPositionByCarType.do"
+
+//车主获取订单
+#define URL_ORDER @"http://123.57.28.11:8080/jfsc_app/selectOrder.do"
+
+//抢单接口
+#define URL_GRABORDER @"http://123.57.28.11:8080/jfsc_app/rushOrder.do"
+
+//乘客查询自己的订单接口
+#define URL_SELFORDER @"http://123.57.28.11:8080/jfsc_app/selectPersonalOrder.do"
+
+//查询自己下的订单是否被接收
+#define URL_ISSELFORDERRECIVED @"http://123.57.28.11:8080/jfsc_app/selectCompleteState.do"
+
+//订单历史记录
+#define URL_ORDERHISTORY @"http://123.57.28.11:8080/jfsc_app/selectOrderByUser.do"
+
+//取消订单接口:
+#define URL_CANCELORDER @"http://123.57.28.11:8080/jfsc_app/cancelOrder.do"
+
+//获取指定用户的位置信息
+#define URL_GETONESPOSITION @"http://123.57.28.11:8080/jfsc_app/selectPositionByUserPhone.do"
+
+//定位通知的标识
+#define LOCATION_CHANGE @"changeLocation"
+
+
+#endif

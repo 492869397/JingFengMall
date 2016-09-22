@@ -1,0 +1,125 @@
+//
+//  PersonnalCenterViewController.m
+//  JingFengMall
+//
+//  Created by len on 16/3/8.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "LoginViewController.h"
+
+#import "PersonnalCenterViewController.h"
+#import "SetUpViewController.h"
+#import "UIImageView+AFNetworking.h"
+
+@interface PersonnalCenterViewController ()
+
+@end
+
+@implementation PersonnalCenterViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"个人中心";
+    
+    [self setSubview];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+//    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithImage:[UIImage new] style:UIBarButtonItemStylePlain target:self action:@selector(enterSetUP)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(enterSetUP)];
+    
+    self.navigationItem.rightBarButtonItem = right;
+    
+}
+
+-(void)setSubview
+{
+//    self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+    
+    self.scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0 , 60, kMainScreenWidth, kMainScreenHeight - 60)];
+    _scroll.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_scroll];
+    
+    self.contentView = [[PersonnalContentViewController alloc]init];
+    _contentView.delegate = self;
+    self.contentView.view.frame = CGRectMake(0 , 0 , kMainScreenWidth, 670);
+    [_scroll addSubview:_contentView.view];
+    
+    _scroll.contentSize = CGSizeMake(_contentView.view.frame.size.width, _contentView.view.frame.size.height );
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:@"isUserLogin"]) {
+        
+        Toast *toa = [Toast makeText:@"登录后才能查看此页面"];
+        [toa showWithType:ShortTime];
+        
+        LoginViewController *login = [[LoginViewController alloc]init];
+        [self.navigationController pushViewController:login animated:YES];
+        
+    }else
+    {
+        Network *net = [[Network alloc]init];
+        NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:1];
+        NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+        [pass setObject:user forKey:@"userPhone"];
+        
+        [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/selectUserByUserPhone.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+               
+                
+                NSDictionary *dic = [[responseObject objectForKey:@"list"]firstObject];
+                
+                NSString *url;
+                if (![[dic objectForKey:@"photoPath"] isKindOfClass:[NSNull class]]) {
+                    
+                    url = [(NSString*)[dic objectForKey:@"photoPath"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    
+                }
+                
+                
+                [_contentView.touxiang setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"touxiang"]];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:[dic objectForKey:@"userName"] forKey:@"userName"];
+                _contentView.userName.text = [dic objectForKey:@"userName"];
+                
+                
+                _contentView.couponCount.text = [NSString stringWithFormat:@"%@张",[responseObject objectForKey:@"listVoucherInfo"]];
+                
+                _contentView.cardPrice.text = [NSString stringWithFormat:@"¥%@",[responseObject objectForKey:@"listCardInfo"]];
+                
+                
+                int index = [(NSString*)[dic objectForKey:@"gradeID"] intValue];
+                
+                NSString *s = [NSString stringWithFormat:@"会员-0%ld",(long)index];
+                
+                _contentView.VIPGrade.image = [UIImage imageNamed:s];
+            }
+        }];
+
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+-(void)enterSetUP
+{
+    SetUpViewController *set = [[SetUpViewController alloc]init];
+    [self.navigationController pushViewController:set animated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+@end

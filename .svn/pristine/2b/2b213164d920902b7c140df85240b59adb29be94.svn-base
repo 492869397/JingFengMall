@@ -1,0 +1,33 @@
+//
+//  CouponViewController.h
+//  JingFengMall
+//
+//  Created by mac on 16/3/15.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+
+typedef enum{
+    CanUse,
+    CanNotUse,
+    HaveUse,
+    HaveExpire
+}CouponAssortType;
+
+@interface CouponViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property(assign,nonatomic)id delegate;
+
+//全部数据
+@property(strong,nonatomic)NSMutableArray *array;
+
+//分类标识
+@property(assign,nonatomic)CouponAssortType assortType;
+//分类数据
+@property(strong,nonatomic)NSMutableArray *sortArray;
+
+
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
+
+
+@end

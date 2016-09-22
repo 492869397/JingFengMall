@@ -1,0 +1,133 @@
+//
+//  SelectAddrssViewController.m
+//  JingFengMall
+//
+//  Created by mac on 16/4/9.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "SelectAddrssViewController.h"
+#import "ConsigneeModel.h"
+#import "AddReciverViewController.h"
+#import "SelectAddressTableViewCell.h"
+#import "CommitOrderViewController.h"
+
+@interface SelectAddrssViewController ()
+
+@end
+
+@implementation SelectAddrssViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = @"选择收货地址";
+
+    self.array = [NSMutableArray array];
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 60)];
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake((kMainScreenWidth-100)/2, 10, 100, 40)];
+    [button addTarget:self action:@selector(addReciver:) forControlEvents:(UIControlEventTouchUpInside)];
+    [button setTitle:@"新建收货人" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor orangeColor] forState:(UIControlStateNormal)];
+    UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(8, 10, 30, 30)];
+    image.image = [UIImage imageNamed:@"btn2"];
+    
+    [view addSubview:image];
+    [view addSubview:button];
+
+    self.tableveiw.tableFooterView = view;
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self getDataFromNet];
+}
+
+-(void)getDataFromNet
+{
+    Network *net = [[Network alloc]init];
+    NSMutableDictionary *pass = [NSMutableDictionary dictionaryWithCapacity:2];
+    NSString *user = [[NSUserDefaults standardUserDefaults]objectForKey:ACCOUNT];
+    [pass setObject:user forKey:@"userPhone"];
+    [net accessNetUrl:@"http://123.57.28.11:8080/jfsc_app/selectAddress.do" parameters:pass success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([[responseObject objectForKey:@"code"]isEqualToNumber:@1]) {
+            NSArray *arr = [responseObject objectForKey:@"list"];
+            
+            [_array removeAllObjects];
+            
+            for (NSDictionary *dic in arr) {
+                ConsigneeModel *con = [[ConsigneeModel alloc]initWithId:[dic objectForKey:@"id"] consignee:[dic objectForKey:@"consignee"] userPhone:[dic objectForKey:@"consigneePhone"] localtion:[dic objectForKey:@"localtion"] street:[dic objectForKey:@"street"] detailAddress:[dic objectForKey:@"detailedAddress"] addressID:[dic objectForKey:@"addressID"]];
+                [_array addObject:con];
+            }
+            
+            [self.tableveiw reloadData];
+        }else
+        {
+            Toast *toa = [Toast makeText:[responseObject objectForKey:@"msg"]];
+            [toa showWithType:ShortTime];
+        }
+    }];
+}
+
+
+-(void)addReciver:(UIButton *)sender
+{
+    AddReciverViewController *view = [[AddReciverViewController alloc]init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _array.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    SelectAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuse"];
+    
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"SelectAddressTableViewCell" owner:nil options:nil]firstObject];
+    }
+    
+    cell.delegate = self;
+    
+    ConsigneeModel *con = _array[indexPath.row];
+    
+    cell.con = con;
+    
+    cell.name.text =con.consignee;
+    cell.number.text = con.userPhone;
+    cell.address.text = [NSString stringWithFormat:@"%@%@%@",con.localtion,con.street,con.detailAddress];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ((CommitOrderViewController*)self.delegate).con = _array[indexPath.row];
+    
+    ((CommitOrderViewController*)self.delegate).addressLabel.text = @"已选择";
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)confirm:(UIButton *)sender {
+}
+
+@end

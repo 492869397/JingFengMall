@@ -1,0 +1,49 @@
+//
+//  CommitOrderViewController.h
+//  JingFengMall
+//
+//  Created by mac on 16/3/22.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "ConsigneeModel.h"
+#import "CouponModel.h"
+
+@interface CommitOrderViewController : UIViewController
+
+@property (strong, nonatomic)ConsigneeModel *con;
+@property(strong,nonatomic)CouponModel *coupon;
+@property(copy,nonatomic)NSString *module;
+@property(copy,nonatomic)NSString *bill;
+
+@property(strong,nonatomic)NSMutableArray *array;
+
+@property(assign,nonatomic)double totalPrice;
+
+@property(assign,nonatomic)int userLevel;
+
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *number;
+@property (strong, nonatomic) IBOutlet UILabel *couponLabel;
+
+@property (strong, nonatomic) IBOutlet UIImageView *photo;
+
+@property (strong, nonatomic) IBOutlet UILabel *price;
+@property (strong, nonatomic) IBOutlet UILabel *minusPrice;
+@property (strong, nonatomic) IBOutlet UILabel *finalPrice;
+
+
+
+
+- (IBAction)lookGoodsDetail:(id)sender;
+- (IBAction)selectGetGoodsPlace:(UITapGestureRecognizer *)sender;
+- (IBAction)selectBill:(UITapGestureRecognizer *)sender;
+- (IBAction)selectCoupon:(UITapGestureRecognizer *)sender;
+
+- (IBAction)confirm:(UIButton *)sender;
+
+-(void)calculatePrice;
+
+@end

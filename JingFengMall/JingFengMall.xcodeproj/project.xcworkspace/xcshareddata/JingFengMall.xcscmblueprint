@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3214df84-178f-d640-a2de-2369b3cb3719++9992",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "3214df84-178f-d640-a2de-2369b3cb3719++9992" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3214df84-178f-d640-a2de-2369b3cb3719++9992" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BF6A9FF8-DF9F-42AC-B4CE-07AF730C5B5C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3214df84-178f-d640-a2de-2369b3cb3719++9992" : "JingFengMall\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "JingFengMall",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "JingFengMall.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/xiaoxinapp.com\/svn\/jfsc",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3214df84-178f-d640-a2de-2369b3cb3719++9992"
+    }
+  ]
+}

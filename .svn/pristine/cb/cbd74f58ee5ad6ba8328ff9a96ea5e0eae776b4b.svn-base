@@ -1,0 +1,20 @@
+//
+//  SelectServicerTableViewCell.h
+//  JingFengMall
+//
+//  Created by mac on 16/4/22.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "auntModel.h"
+@interface SelectServicerTableViewCell : UITableViewCell
+
+@property (strong ,nonatomic)auntModel *model;
+@property(assign,nonatomic)UIViewController *delegate;
+@property (strong ,nonatomic) UINavigationController *NavController;
+@property(nonatomic,copy) void(^myselectBlock)(NSString *selectID);
+@property(nonatomic,copy) NSString *strlbl;
+@property(nonatomic,copy) NSString *typeID;
+
+@end

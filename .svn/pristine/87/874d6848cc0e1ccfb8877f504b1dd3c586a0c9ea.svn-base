@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarMainViewController">
+            <connections>
+                <outlet property="scroll" destination="gA9-fn-Iwl" id="H8M-u1-grS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gA9-fn-Iwl">
+                    <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="R3V-N2-oKN"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" tag="2" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1u-AN-MzM">
+                    <rect key="frame" x="210" y="399" width="180" height="60"/>
+                    <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                    <state key="normal" image="我是车主_03.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="carOwner:" destination="-1" eventType="touchUpInside" id="BH9-ZB-f8V"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7f-DC-ZK3">
+                    <rect key="frame" x="210" y="489" width="180" height="60"/>
+                    <state key="normal" title="历史记录" backgroundImage="jiaoche1_03.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="enterHistory:" destination="-1" eventType="touchUpInside" id="ejj-f4-IwW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vm-39-4f7">
+                    <rect key="frame" x="210" y="309" width="180" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="BbD-uk-uZn"/>
+                        <constraint firstAttribute="height" constant="60" id="Ezr-lr-YwT"/>
+                    </constraints>
+                    <state key="normal" image="首页00_03.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getCar:" destination="-1" eventType="touchUpInside" id="jsY-Rq-D1y"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gA9-fn-Iwl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IPH-aS-yNW"/>
+                <constraint firstItem="9Vm-39-4f7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="JYO-ja-edX"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="height" secondItem="c7f-DC-ZK3" secondAttribute="height" id="PX3-r1-nex"/>
+                <constraint firstItem="gA9-fn-Iwl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="UU6-bW-Tc5"/>
+                <constraint firstAttribute="bottom" secondItem="c7f-DC-ZK3" secondAttribute="bottom" constant="40" id="XZf-Zv-Mmx"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="height" secondItem="9Vm-39-4f7" secondAttribute="height" id="bmi-dJ-xGK"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="centerX" secondItem="c7f-DC-ZK3" secondAttribute="centerX" id="ehB-kC-SC8"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="width" secondItem="c7f-DC-ZK3" secondAttribute="width" id="eqw-QT-2ww"/>
+                <constraint firstItem="c7f-DC-ZK3" firstAttribute="top" secondItem="Z1u-AN-MzM" secondAttribute="bottom" constant="30" id="h5C-ne-MXk"/>
+                <constraint firstAttribute="centerX" secondItem="9Vm-39-4f7" secondAttribute="centerX" id="j1C-Wy-QqF"/>
+                <constraint firstItem="9Vm-39-4f7" firstAttribute="top" secondItem="gA9-fn-Iwl" secondAttribute="bottom" constant="45" id="k7v-JN-oXO"/>
+                <constraint firstAttribute="trailing" secondItem="gA9-fn-Iwl" secondAttribute="trailing" id="m1Q-yB-h77"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="width" secondItem="9Vm-39-4f7" secondAttribute="width" id="oB1-rR-1Iw"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="centerX" secondItem="9Vm-39-4f7" secondAttribute="centerX" id="pex-6L-ouw"/>
+                <constraint firstItem="Z1u-AN-MzM" firstAttribute="top" secondItem="9Vm-39-4f7" secondAttribute="bottom" constant="30" id="sMe-q7-i5y"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="JYO-ja-edX"/>
+                    <exclude reference="XZf-Zv-Mmx"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="225" y="279"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="jiaoche1_03.png" width="515" height="170"/>
+        <image name="我是车主_03.png" width="515" height="170"/>
+        <image name="首页00_03.png" width="515" height="169"/>
+    </resources>
+</document>

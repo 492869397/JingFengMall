@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZhiFuView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyY-cO-MxM">
+                    <rect key="frame" x="150" y="192" width="300" height="276"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="de7-zh-EIr">
+                            <rect key="frame" x="63" y="106" width="175" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="S7U-rL-yFK"/>
+                                <constraint firstAttribute="width" constant="60" id="vRa-dV-vqt"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="-70" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="135" maxY="5"/>
+                            <state key="normal" title="微信支付" image="micro_messenger.png" backgroundImage="btn0.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="S7U-rL-yFK"/>
+                                    <exclude reference="vRa-dV-vqt"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="wxPay:" destination="iN0-l3-epB" eventType="touchUpInside" id="9wn-f5-xZ5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsH-3P-FK1">
+                            <rect key="frame" x="63" y="216" width="175" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="Aj3-lK-hKh"/>
+                                <constraint firstAttribute="height" constant="30" id="uBV-6g-obe"/>
+                            </constraints>
+                            <state key="normal" title="取消" backgroundImage="btn0.png">
+                                <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Aj3-lK-hKh"/>
+                                    <exclude reference="uBV-6g-obe"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="hBh-xZ-HEm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWy-dr-k8p">
+                            <rect key="frame" x="63" y="51" width="175" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Exq-Pb-zle"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="Nsm-VD-SoQ"/>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="fBn-cE-rjd"/>
+                                <constraint firstAttribute="height" constant="40" id="mKQ-I7-baK"/>
+                                <constraint firstAttribute="width" constant="175" id="o06-M9-3jE"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="vnf-4t-jBg"/>
+                            </constraints>
+                            <inset key="titleEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="135" maxY="5"/>
+                            <state key="normal" title="支付宝" image="100x100.png" backgroundImage="btn0.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Exq-Pb-zle"/>
+                                    <exclude reference="Nsm-VD-SoQ"/>
+                                    <exclude reference="fBn-cE-rjd"/>
+                                    <exclude reference="vnf-4t-jBg"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="aliPay:" destination="iN0-l3-epB" eventType="touchUpInside" id="0K5-82-6NC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irO-Xe-NlV">
+                            <rect key="frame" x="63" y="161" width="175" height="40"/>
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="储值卡支付" image="chu.png" backgroundImage="btn0.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="CardPay:" destination="iN0-l3-epB" eventType="touchUpInside" id="l2p-rb-d7W"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-Ba-TTO">
+                            <rect key="frame" x="20" y="15" width="68" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.28813733552631576" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="de7-zh-EIr" firstAttribute="top" secondItem="DWy-dr-k8p" secondAttribute="bottom" constant="15" id="2KM-Hq-gin"/>
+                        <constraint firstItem="zsH-3P-FK1" firstAttribute="width" secondItem="DWy-dr-k8p" secondAttribute="width" id="3T0-Ai-ypF"/>
+                        <constraint firstItem="zsH-3P-FK1" firstAttribute="height" secondItem="DWy-dr-k8p" secondAttribute="height" id="9em-M3-ACI"/>
+                        <constraint firstItem="de7-zh-EIr" firstAttribute="height" secondItem="DWy-dr-k8p" secondAttribute="height" id="9yM-GM-4Sq"/>
+                        <constraint firstItem="irO-Xe-NlV" firstAttribute="centerX" secondItem="DWy-dr-k8p" secondAttribute="centerX" id="CCX-1K-nGz"/>
+                        <constraint firstItem="DWy-dr-k8p" firstAttribute="top" secondItem="lyY-cO-MxM" secondAttribute="top" constant="20" id="IFW-tS-5qD"/>
+                        <constraint firstItem="DWy-dr-k8p" firstAttribute="top" secondItem="Dxh-Ba-TTO" secondAttribute="bottom" constant="15" id="IzA-pJ-wY9"/>
+                        <constraint firstItem="irO-Xe-NlV" firstAttribute="width" secondItem="DWy-dr-k8p" secondAttribute="width" id="KTc-Mr-QDg"/>
+                        <constraint firstItem="zsH-3P-FK1" firstAttribute="centerX" secondItem="lyY-cO-MxM" secondAttribute="centerX" id="N6e-Zv-PBg"/>
+                        <constraint firstItem="irO-Xe-NlV" firstAttribute="top" secondItem="de7-zh-EIr" secondAttribute="bottom" constant="15" id="a9e-bA-gvd"/>
+                        <constraint firstItem="de7-zh-EIr" firstAttribute="centerX" secondItem="lyY-cO-MxM" secondAttribute="centerX" id="coa-Nr-D74"/>
+                        <constraint firstItem="irO-Xe-NlV" firstAttribute="height" secondItem="DWy-dr-k8p" secondAttribute="height" id="e7u-Pd-n5U"/>
+                        <constraint firstAttribute="bottom" secondItem="zsH-3P-FK1" secondAttribute="bottom" constant="20" id="fgR-0B-ppR"/>
+                        <constraint firstItem="DWy-dr-k8p" firstAttribute="centerX" secondItem="lyY-cO-MxM" secondAttribute="centerX" id="gS5-HM-4Vv"/>
+                        <constraint firstItem="de7-zh-EIr" firstAttribute="width" secondItem="DWy-dr-k8p" secondAttribute="width" id="hcg-tt-eNk"/>
+                        <constraint firstItem="Dxh-Ba-TTO" firstAttribute="top" secondItem="lyY-cO-MxM" secondAttribute="top" constant="15" id="rhc-dO-yS4"/>
+                        <constraint firstItem="zsH-3P-FK1" firstAttribute="top" secondItem="irO-Xe-NlV" secondAttribute="bottom" constant="15" id="sms-uF-GEe"/>
+                        <constraint firstAttribute="width" constant="300" id="yOt-7D-CmQ"/>
+                        <constraint firstItem="zsH-3P-FK1" firstAttribute="top" secondItem="de7-zh-EIr" secondAttribute="bottom" constant="60" id="yy3-WS-Ee9"/>
+                        <constraint firstItem="Dxh-Ba-TTO" firstAttribute="leading" secondItem="lyY-cO-MxM" secondAttribute="leading" constant="20" id="zYj-U9-AaG"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="IFW-tS-5qD"/>
+                            <exclude reference="yy3-WS-Ee9"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.70482113486842102" alpha="0.51380384290540537" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1FO-Lx-gxn"/>
+                <constraint firstAttribute="trailing" secondItem="lyY-cO-MxM" secondAttribute="trailing" constant="50" id="23A-GF-w7K"/>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9zL-Xs-GtO"/>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="125" id="Ckn-7m-Svy"/>
+                <constraint firstAttribute="trailing" secondItem="lyY-cO-MxM" secondAttribute="trailing" constant="50" id="Czy-5f-eLS"/>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="30" id="DuA-v3-JbX"/>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ec9-B1-7z4"/>
+                <constraint firstItem="lyY-cO-MxM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="FVY-F5-YBI"/>
+                <constraint firstAttribute="bottom" secondItem="lyY-cO-MxM" secondAttribute="bottom" constant="150" id="J1J-Wb-Fbh"/>
+                <constraint firstAttribute="bottom" secondItem="lyY-cO-MxM" secondAttribute="bottom" constant="168" id="i0G-J8-igX"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="1FO-Lx-gxn"/>
+                    <exclude reference="23A-GF-w7K"/>
+                    <exclude reference="Ckn-7m-Svy"/>
+                    <exclude reference="Czy-5f-eLS"/>
+                    <exclude reference="Ec9-B1-7z4"/>
+                    <exclude reference="FVY-F5-YBI"/>
+                    <exclude reference="J1J-Wb-Fbh"/>
+                    <exclude reference="i0G-J8-igX"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="subView" destination="lyY-cO-MxM" id="mHs-1R-LzC"/>
+            </connections>
+            <point key="canvasLocation" x="296" y="303"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="100x100.png" width="100" height="100"/>
+        <image name="btn0.png" width="258" height="94"/>
+        <image name="chu.png" width="35" height="34"/>
+        <image name="micro_messenger.png" width="89" height="73"/>
+    </resources>
+</document>

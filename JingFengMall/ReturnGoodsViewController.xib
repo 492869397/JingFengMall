@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReturnGoodsViewController">
+            <connections>
+                <outlet property="textView" destination="dW3-ez-s1I" id="3er-N9-bIG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewForPhoto" destination="Y9T-dO-XtG" id="fRT-J2-oLl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dW3-ez-s1I">
+                    <rect key="frame" x="30" y="130" width="540" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="wst-Xl-lLc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hn-EN-NXh">
+                    <rect key="frame" x="285" y="390" width="30" height="30"/>
+                    <state key="normal" title="提交"/>
+                    <connections>
+                        <action selector="comfirm:" destination="-1" eventType="touchUpInside" id="bAY-wn-3Mk"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9T-dO-XtG">
+                    <rect key="frame" x="30" y="260" width="540" height="100"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cew-mn-Scg">
+                            <rect key="frame" x="225" y="35" width="90" height="30"/>
+                            <state key="normal" title="点击上传图片"/>
+                            <connections>
+                                <action selector="selectPhoto:" destination="-1" eventType="touchUpInside" id="rh0-P8-o3e"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="OOh-50-ZCc"/>
+                        <constraint firstItem="cew-mn-Scg" firstAttribute="centerX" secondItem="Y9T-dO-XtG" secondAttribute="centerX" id="lyd-h7-7Pc"/>
+                        <constraint firstItem="cew-mn-Scg" firstAttribute="centerY" secondItem="Y9T-dO-XtG" secondAttribute="centerY" id="ofc-6b-cMs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Y9T-dO-XtG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="0k3-ke-k9i"/>
+                <constraint firstItem="9Hn-EN-NXh" firstAttribute="top" secondItem="Y9T-dO-XtG" secondAttribute="bottom" constant="30" id="9fj-pz-uOV"/>
+                <constraint firstItem="dW3-ez-s1I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="130" id="9qF-8v-1jL"/>
+                <constraint firstItem="Y9T-dO-XtG" firstAttribute="top" secondItem="dW3-ez-s1I" secondAttribute="bottom" constant="30" id="D90-Dq-CkR"/>
+                <constraint firstItem="9Hn-EN-NXh" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EvZ-Tp-FQr"/>
+                <constraint firstAttribute="trailing" secondItem="dW3-ez-s1I" secondAttribute="trailing" constant="30" id="al5-S8-oWX"/>
+                <constraint firstAttribute="trailing" secondItem="Y9T-dO-XtG" secondAttribute="trailing" constant="30" id="kik-PI-TIQ"/>
+                <constraint firstItem="dW3-ez-s1I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="qK1-Ox-gGZ"/>
+                <constraint firstItem="9Hn-EN-NXh" firstAttribute="top" secondItem="dW3-ez-s1I" secondAttribute="bottom" constant="50" id="t8W-40-jfc"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="t8W-40-jfc"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

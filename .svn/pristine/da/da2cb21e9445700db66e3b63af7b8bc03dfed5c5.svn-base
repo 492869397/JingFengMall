@@ -1,0 +1,28 @@
+//
+//  HomeAssessViewController.h
+//  JingFengMall
+//
+//  Created by len on 16/5/10.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HomeAssessViewController : UIViewController
+
+@property (nonatomic,copy)NSString *orderID;
+@property (nonatomic,copy)NSString *lablestr1;
+@property (nonatomic,copy)NSString *lablestr2;
+@property (nonatomic,copy)NSString *lablestr3;
+@property (nonatomic,copy)NSString *lablestr4;
+@property (nonatomic,copy)NSString *lablestr5;
+@property (nonatomic,copy)NSString *lablestr6;
+@property (nonatomic,copy)NSString *lablestr7;
+@property (nonatomic,copy)NSString *lablestr8;
+@property (nonatomic,copy)NSString *lablestr9;
+@property (nonatomic,copy)NSString *lablestr10;
+//@property (nonatomic,copy)NSNumber *twoTag;
+//@property (nonatomic,copy)NSNumber *threeTag;
+
+
+@end

@@ -1,0 +1,20 @@
+//
+//  HomeInformationViewController.h
+//  JingFengMall
+//
+//  Created by len on 16/5/10.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "auntModel.h"
+@interface HomeInformationViewController : UIViewController<UIScrollViewDelegate>
+-(void)setModel:(auntModel *)model;
+@property (nonatomic,copy)NSString *employeeID;
+@property (strong, nonatomic) IBOutlet UIButton *btnSelect;
+@property (nonatomic,copy)NSString *typeId;
+
+@property (weak,nonatomic)id delegate;
+
+
+@end

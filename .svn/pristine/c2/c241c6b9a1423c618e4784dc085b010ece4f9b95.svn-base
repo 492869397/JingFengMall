@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeSucceedViewController">
+            <connections>
+                <outlet property="AseImageView" destination="Pyi-HI-px8" id="Dcz-51-MqK"/>
+                <outlet property="Aselbl" destination="BAN-jw-7Vf" id="cQc-9E-9kR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon31.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pyi-HI-px8">
+                    <rect key="frame" x="120" y="150" width="135" height="135"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="135" id="XCc-iq-WwE"/>
+                        <constraint firstAttribute="height" constant="135" id="p3T-Mv-749"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="null" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAN-jw-7Vf">
+                    <rect key="frame" x="174" y="305" width="27" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lX2-f1-pxy">
+                    <rect key="frame" x="10" y="617" width="355" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="YXx-OC-vnN"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="btn6.png"/>
+                    <connections>
+                        <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="gcE-Kw-3Te"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="lX2-f1-pxy" secondAttribute="bottom" constant="10" id="12T-9A-kMZ"/>
+                <constraint firstAttribute="trailing" secondItem="lX2-f1-pxy" secondAttribute="trailing" constant="10" id="1in-yJ-Jy3"/>
+                <constraint firstItem="Pyi-HI-px8" firstAttribute="centerX" secondItem="lX2-f1-pxy" secondAttribute="centerX" id="4E9-Ra-yNx"/>
+                <constraint firstItem="Pyi-HI-px8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="KZw-c1-cXS"/>
+                <constraint firstItem="lX2-f1-pxy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="SnP-HF-TLA"/>
+                <constraint firstItem="Pyi-HI-px8" firstAttribute="centerX" secondItem="BAN-jw-7Vf" secondAttribute="centerX" id="hku-h4-Jnj"/>
+                <constraint firstItem="BAN-jw-7Vf" firstAttribute="top" secondItem="Pyi-HI-px8" secondAttribute="bottom" constant="20" id="zmw-7W-JU8"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="407.5" y="277.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn6.png" width="1050" height="113"/>
+        <image name="icon31.png" width="451" height="451"/>
+    </resources>
+</document>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangeViewController">
+            <connections>
+                <outlet property="button" destination="wED-8h-ZdU" id="6jD-Mx-omB"/>
+                <outlet property="passWord" destination="CR0-BI-six" id="gx5-FQ-k9Z"/>
+                <outlet property="passWord2" destination="Ibv-1g-YLh" id="APL-Yr-S3B"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册背景.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5Yh-UU-2xQ">
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="设置新密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CR0-BI-six">
+                    <rect key="frame" x="70" y="140" width="460" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="再次确认" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ibv-1g-YLh">
+                    <rect key="frame" x="70" y="220" width="460" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wED-8h-ZdU">
+                    <rect key="frame" x="70" y="320" width="460" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Qay-hb-pLX"/>
+                    </constraints>
+                    <state key="normal" title="确定" backgroundImage="按钮_03.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="confirm:" destination="-1" eventType="touchUpInside" id="KbB-pn-hMz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="wED-8h-ZdU" secondAttribute="centerX" id="01o-YX-ys1"/>
+                <constraint firstItem="CR0-BI-six" firstAttribute="width" secondItem="wED-8h-ZdU" secondAttribute="width" id="191-Jv-g8b"/>
+                <constraint firstAttribute="centerX" secondItem="CR0-BI-six" secondAttribute="centerX" id="3U9-zf-lN7"/>
+                <constraint firstAttribute="centerX" secondItem="Ibv-1g-YLh" secondAttribute="centerX" id="4IP-OX-Nqd"/>
+                <constraint firstItem="wED-8h-ZdU" firstAttribute="top" secondItem="Ibv-1g-YLh" secondAttribute="bottom" constant="70" id="Aak-tN-FCs"/>
+                <constraint firstItem="5Yh-UU-2xQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jra-p7-BrG"/>
+                <constraint firstItem="CR0-BI-six" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="PFZ-It-MFI"/>
+                <constraint firstAttribute="bottom" secondItem="5Yh-UU-2xQ" secondAttribute="bottom" id="StT-4q-0Qd"/>
+                <constraint firstItem="CR0-BI-six" firstAttribute="width" secondItem="Ibv-1g-YLh" secondAttribute="width" id="WNT-1Q-18J"/>
+                <constraint firstItem="Ibv-1g-YLh" firstAttribute="top" secondItem="CR0-BI-six" secondAttribute="bottom" constant="50" id="amL-Tg-O4V"/>
+                <constraint firstItem="CR0-BI-six" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="140" id="cp0-Ec-aH0"/>
+                <constraint firstAttribute="trailing" secondItem="5Yh-UU-2xQ" secondAttribute="trailing" id="k65-Wv-UsP"/>
+                <constraint firstItem="Ibv-1g-YLh" firstAttribute="height" secondItem="CR0-BI-six" secondAttribute="height" id="kyf-wI-Fip"/>
+                <constraint firstItem="5Yh-UU-2xQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="lvI-hs-JXL"/>
+            </constraints>
+            <point key="canvasLocation" x="-25" y="-89"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="按钮_03.png" width="190" height="100"/>
+        <image name="注册背景.jpg" width="750" height="1334"/>
+    </resources>
+</document>

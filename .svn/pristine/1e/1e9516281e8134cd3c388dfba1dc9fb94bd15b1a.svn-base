@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeOrderViewController">
+            <connections>
+                <outlet property="StayEvaluateBtn" destination="2HC-p9-LaP" id="y9M-9T-V7v"/>
+                <outlet property="StayFinishBtn" destination="5fZ-IX-ohu" id="WYT-TT-Puh"/>
+                <outlet property="imageView" destination="zXP-LL-TYi" id="ULm-dW-1NG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn140.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXP-LL-TYi">
+                    <rect key="frame" x="50" y="74" width="275" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="TMj-1P-PRS"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fZ-IX-ohu">
+                    <rect key="frame" x="55" y="74" width="130" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="GTo-gp-Cag"/>
+                        <constraint firstAttribute="height" constant="35" id="zIT-r6-rVl"/>
+                    </constraints>
+                    <connections>
+                        <action selector="StayFinishBtn:" destination="-1" eventType="touchUpInside" id="C0e-HI-IG3"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HC-p9-LaP">
+                    <rect key="frame" x="190" y="74" width="130" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="aCv-gQ-Xl7"/>
+                        <constraint firstAttribute="height" constant="35" id="m60-xT-QbG"/>
+                    </constraints>
+                    <connections>
+                        <action selector="StayEvaluateBtn:" destination="-1" eventType="touchUpInside" id="vSP-zR-Gt1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2HC-p9-LaP" secondAttribute="trailing" constant="55" id="DQD-Mn-W60"/>
+                <constraint firstItem="zXP-LL-TYi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="GyW-Js-bsD"/>
+                <constraint firstItem="zXP-LL-TYi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="QRS-SG-vT0"/>
+                <constraint firstItem="2HC-p9-LaP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="hQc-R6-RMD"/>
+                <constraint firstAttribute="trailing" secondItem="zXP-LL-TYi" secondAttribute="trailing" constant="50" id="n08-Ko-xYc"/>
+                <constraint firstItem="5fZ-IX-ohu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="ods-XW-4jD"/>
+                <constraint firstItem="5fZ-IX-ohu" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="uSc-bV-5T1"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="404.5" y="162.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn140.png" width="600" height="80"/>
+    </resources>
+</document>

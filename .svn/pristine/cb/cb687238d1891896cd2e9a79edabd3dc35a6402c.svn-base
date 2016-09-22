@@ -1,0 +1,22 @@
+//
+//  CouponTableViewCell.m
+//  JingFengMall
+//
+//  Created by mac on 16/3/15.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "CouponTableViewCell.h"
+
+@implementation CouponTableViewCell
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    [super setSelected:selected animated:animated];
+
+}
+
+@end

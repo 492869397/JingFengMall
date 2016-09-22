@@ -1,0 +1,18 @@
+//
+//  SJAccount.h
+//  传值
+//
+//  Created by mac on 15/9/1.
+//  Copyright (c) 2015年 UQI. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "priceModel.h"
+
+@interface SJAccount : NSObject
+
++(void)saveUser:(priceModel *)user;
++ (void)removUser;
++(priceModel *)user;
+
+@end

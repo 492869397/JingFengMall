@@ -1,0 +1,67 @@
+//
+//  BaseOrderTableViewCell.m
+//  JingFengMall
+//
+//  Created by mac on 16/3/29.
+//  Copyright © 2016年 yunlan. All rights reserved.
+//
+
+#import "BaseOrderTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "GoodsModel.h"
+
+
+@implementation BaseOrderTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    
+    
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+-(void)setOrder:(MallOrderModel *)order
+{
+    _order = order;
+    
+    
+    CellSubview *cellSubview = [self viewWithTag:100];
+    
+    if (cellSubview) {
+        if ([order.completeState isEqualToString:@"未完成"]) {
+            cellSubview.payState.text = _order.paymentState;
+        }else
+        {
+            cellSubview.payState.text = _order.completeState;
+        }
+        
+        GoodsModel *goods = _order.goodsArray[0];
+        
+        //其他标签的赋值
+        cellSubview.name.text = goods.title;
+        
+        cellSubview.describe.text = goods.c_describe;
+        
+        cellSubview.price.text = [NSString stringWithFormat:@"¥%@",goods.price];
+        
+        cellSubview.number.text = [NSString stringWithFormat:@"×%@",goods.goodsNumber];
+        
+        NSArray *arr = [_order
+                        .commodityNumber componentsSeparatedByString:@","];
+        
+        cellSubview.totalPrice.text = [NSString stringWithFormat:@"共%ld件商品  合计:%@元",arr.count/2,_order.orderMoney];
+        
+        NSString *url = [goods.photo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [cellSubview.photo setImageWithURL:[NSURL URLWithString:url]];
+        
+    }
+    
+}
+
+@end

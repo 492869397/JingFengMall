@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="uncomment" rowHeight="246" id="C3N-0d-Fsc" customClass="UncommentTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="246"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C3N-0d-Fsc" id="vqc-lw-lpL">
+                <rect key="frame" x="0.0" y="0.0" width="385" height="245"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F33-3A-jSc" customClass="CellSubview">
+                        <rect key="frame" x="8" y="8" width="369" height="196"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="196" id="cmO-Pa-ab8"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-0e-6cn">
+                        <rect key="frame" x="281" y="207" width="80" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="bND-VU-PmM"/>
+                            <constraint firstAttribute="width" constant="80" id="fGD-pq-tmV"/>
+                        </constraints>
+                        <state key="normal" title="评价" backgroundImage="btn0.png">
+                            <color key="titleColor" red="1" green="0.60348136959999998" blue="0.32456906759999998" alpha="1" colorSpace="deviceRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="commentGoods:" destination="C3N-0d-Fsc" eventType="touchUpInside" id="OEd-U0-cZE"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yJi-0e-6cn" firstAttribute="top" secondItem="F33-3A-jSc" secondAttribute="bottom" constant="3" id="IcH-hp-tca"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="F33-3A-jSc" secondAttribute="trailing" id="PEL-mq-9Df"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yJi-0e-6cn" secondAttribute="bottom" id="Y9Z-lc-vIS"/>
+                    <constraint firstItem="F33-3A-jSc" firstAttribute="top" secondItem="vqc-lw-lpL" secondAttribute="topMargin" id="gMH-2Q-z4y"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yJi-0e-6cn" secondAttribute="trailing" constant="16" id="k6z-MU-ZjV"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="yJi-0e-6cn" secondAttribute="bottom" constant="-2" id="pKl-Gn-GfG"/>
+                    <constraint firstItem="F33-3A-jSc" firstAttribute="leading" secondItem="vqc-lw-lpL" secondAttribute="leadingMargin" id="z51-o8-dCU"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="pKl-Gn-GfG"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="207.5" y="225"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn0.png" width="258" height="94"/>
+    </resources>
+</document>
